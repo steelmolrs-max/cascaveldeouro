@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; script-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta name="description" content="Davi Vianna & Cezar Martins — Carro #82 na Cascavel de Ouro 2026. Patrocine o projeto: camarote para 80 convidados, marca no carro e transmissão na TV.">
+<meta property="og:title" content="Cascavel de Ouro 2026 — Carro #82 · Davi Vianna & Cezar Martins">
+<meta property="og:description" content="Sua marca na prova mais tradicional do Paraná. Camarote para 80 convidados, cotas a partir de R$ 5.777.">
+<meta property="og:image" content="https://www.cascaveldeouro.com.br/fotos/hero.jpg">
+<title>Cascavel de Ouro 2026 — Carro #82 · Davi Vianna & Cezar Martins</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --ouro: #f5b800; --preto: #0d0d0d; --grafite: #1a1a1a; --branco: #ffffff; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--preto); color: #eee; line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 64px 0; }
+  h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 900; margin-bottom: 16px; }
+  h2 span { color: var(--ouro); }
+  .checkers { height: 14px; background: repeating-conic-gradient(#fff 0% 25%, #0d0d0d 0% 50%) 0 0 / 14px 14px; }
+
+  /* hero */
+  .hero { position: relative; min-height: 92vh; display: flex; align-items: flex-end;
+          background: linear-gradient(160deg, #0d0d0d 0%, #1a1a1a 55%, #2b2100 100%); overflow: hidden; }
+  .hero-img { position: absolute; inset: 0; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: .45; }
+  .hero-content { position: relative; padding: 60px 0 70px; }
+  .tag { display: inline-block; border: 2px solid var(--ouro); color: var(--ouro); padding: 8px 16px;
+         font-weight: 700; letter-spacing: 2px; font-size: 13px; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(38px, 7vw, 72px); font-weight: 900; line-height: 1.03; color: #fff; }
+  .hero h1 .num { color: var(--ouro); }
+  .hero p.sub { font-size: clamp(16px, 2.4vw, 21px); color: #ddd; margin: 12px 0 26px; }
+  .evento-badge { display: inline-block; background: var(--ouro); color: var(--preto); padding: 12px 22px;
+                  font-weight: 800; font-size: clamp(15px, 2.2vw, 19px); margin-bottom: 28px; }
+  .btn { display: inline-block; padding: 16px 30px; border-radius: 8px; font-weight: 800; font-size: 17px;
+         text-decoration: none; transition: transform .15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-wpp { background: #25d366; color: #fff; }
+  .btn-ghost { border: 2px solid var(--ouro); color: var(--ouro); margin-left: 10px; }
+  @media (max-width: 560px) { .btn-ghost { margin-left: 0; margin-top: 10px; } }
+
+  /* números */
+  .nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-top: 30px; }
+  .num-card { background: var(--grafite); border-top: 4px solid var(--ouro); border-radius: 8px; padding: 22px; text-align: center; }
+  .num-card .n { font-size: 34px; font-weight: 900; color: var(--ouro); }
+  .num-card .l { font-size: 14px; color: #bbb; margin-top: 4px; }
+
+  /* projeto */
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 28px; }
+  .card { background: var(--grafite); border-radius: 10px; padding: 26px; border-top: 4px solid var(--ouro); }
+  .card h3 { font-size: 19px; margin-bottom: 10px; color: #fff; }
+  .card ul { list-style: none; }
+  .card li { padding: 5px 0 5px 24px; position: relative; color: #ccc; font-size: 15px; }
+  .card li::before { content: '🏁'; position: absolute; left: 0; font-size: 12px; top: 9px; }
+
+  /* cotas */
+  .cotas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 30px; }
+  .cota { background: var(--grafite); border-radius: 12px; padding: 28px 24px; border: 1px solid #2e2e2e;
+          display: flex; flex-direction: column; }
+  .cota.destaque { border: 2px solid var(--ouro); background: #201a05; }
+  .cota .nome { font-size: 20px; font-weight: 900; }
+  .cota .vagas { font-size: 12px; letter-spacing: 1px; color: #999; margin: 2px 0 14px; text-transform: uppercase; }
+  .cota .preco { font-size: 30px; font-weight: 900; color: var(--ouro); margin-bottom: 14px; }
+  .cota ul { list-style: none; flex: 1; margin-bottom: 18px; }
+  .cota li { padding: 4px 0 4px 22px; position: relative; font-size: 14.5px; color: #ccc; }
+  .cota li::before { content: '✔'; position: absolute; left: 0; color: var(--ouro); }
+  .cota .btn { text-align: center; font-size: 15px; padding: 13px 10px; }
+
+  /* galeria */
+  .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 28px; }
+  .galeria img { border-radius: 10px; height: 200px; width: 100%; object-fit: cover; }
+
+  /* transmissão */
+  .tv { background: var(--grafite); border-radius: 12px; padding: 30px; margin-top: 28px; }
+  .tv p { color: #ccc; font-size: 16px; }
+  .tv strong { color: var(--ouro); }
+
+  /* cta final */
+  .cta-final { background: linear-gradient(160deg, #2b2100, #0d0d0d); text-align: center; }
+  .cta-final p { color: #ccc; max-width: 640px; margin: 0 auto 28px; font-size: 17px; }
+
+  footer { border-top: 1px solid #262626; padding: 26px 0; font-size: 13px; color: #888; text-align: center; }
+  footer a { color: var(--ouro); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="checkers"></div>
+
+<header class="hero">
+  <div class="hero-img"><img src="fotos/hero.jpg" alt="Carro #82 em alta velocidade à noite"></div>
+  <div class="wrap hero-content">
+    <span class="tag">PROJETO DE PATROCÍNIO 2026</span>
+    <h1>DAVI VIANNA <span class="num">#82</span></h1>
+    <p class="sub">Em dupla com <strong>Cezar Martins</strong> · MBR — Marcas Brasil Racing</p>
+    <div><span class="evento-badge">🏁 CASCAVEL DE OURO — 21 DE NOVEMBRO · AUTÓDROMO DE CASCAVEL</span></div>
+    <div>
+      <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Quero%20saber%20mais%20sobre%20o%20patroc%C3%ADnio%20do%20carro%20%2382%20na%20Cascavel%20de%20Ouro">💬 Quero patrocinar</a>
+      <a class="btn btn-ghost" href="midia-kit-davi-vianna-82.pdf" download>📄 Baixar mídia kit (PDF)</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Um evento <span>dentro do evento</span></h2>
+    <p style="color:#ccc; max-width:760px">A Cascavel de Ouro é a prova mais tradicional do automobilismo paranaense,
+       disputada desde 1967. Dentro dela, montamos uma experiência exclusiva: um <strong style="color:#fff">camarote
+       para 80 convidados</strong>, onde a sua marca não aparece só na pista — ela recebe clientes, fecha negócio
+       e vive a corrida de perto.</p>
+    <div class="nums">
+      <div class="num-card"><div class="n">80</div><div class="l">convidados no camarote</div></div>
+      <div class="num-card"><div class="n">21/11</div><div class="l">dia da prova</div></div>
+      <div class="num-card"><div class="n">2</div><div class="l">pilotos no carro #82</div></div>
+      <div class="num-card"><div class="n">TV</div><div class="l">prova transmitida ao vivo</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cols">
+      <div class="card">
+        <h3>🏎️ Na pista</h3>
+        <ul>
+          <li>Logo adesivado no carro #82</li>
+          <li>Marca no macacão e boné dos pilotos</li>
+          <li>Exposição em pódio e entrevistas</li>
+          <li>Dupla de pilotos = o dobro de tempo de pista</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🥂 No camarote</h3>
+        <ul>
+          <li>Convites pra sua equipe e clientes</li>
+          <li>Estande da marca (cota master)</li>
+          <li>Telão, ativações e sorteios</li>
+          <li>Buffet completo no dia da prova</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>📱 No digital</h3>
+        <ul>
+          <li>Posts e stories no @pilotodavivianna</li>
+          <li>Anúncios pagos na região de Cascavel</li>
+          <li>Vídeo pós-corrida com a marca</li>
+          <li>Relatório completo de entrega</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Cotas de <span>patrocínio</span></h2>
+    <div class="cotas-grid">
+      <div class="cota destaque">
+        <div class="nome">🥇 OURO</div>
+        <div class="vagas">Master · 1 vaga</div>
+        <div class="preco">R$ 75.000</div>
+        <ul>
+          <li>Nome em destaque no carro #82</li>
+          <li>Estande exclusivo no camarote</li>
+          <li>20 convites</li>
+          <li>Logo em todo material e posts</li>
+          <li>Fala da marca no evento</li>
+        </ul>
+        <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Tenho%20interesse%20na%20cota%20OURO">Quero a cota Ouro</a>
+      </div>
+      <div class="cota">
+        <div class="nome">🥈 PRATA</div>
+        <div class="vagas">2 vagas</div>
+        <div class="preco">R$ 35.000</div>
+        <ul>
+          <li>Logo no carro #82</li>
+          <li>10 convites</li>
+          <li>Post dedicado no Instagram</li>
+          <li>Logo no material do camarote</li>
+        </ul>
+        <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Tenho%20interesse%20na%20cota%20PRATA">Quero a cota Prata</a>
+      </div>
+      <div class="cota">
+        <div class="nome">🥉 BRONZE</div>
+        <div class="vagas">5 vagas</div>
+        <div class="preco">R$ 12.000</div>
+        <ul>
+          <li>Logo no material e no telão</li>
+          <li>4 convites</li>
+          <li>Menção nos posts coletivos</li>
+        </ul>
+        <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Tenho%20interesse%20na%20cota%20BRONZE">Quero a cota Bronze</a>
+      </div>
+      <div class="cota">
+        <div class="nome">🏁 APOIADOR</div>
+        <div class="vagas">6 vagas · porta de entrada</div>
+        <div class="preco">R$ 5.777</div>
+        <ul>
+          <li>Logo no telão do camarote</li>
+          <li>2 convites</li>
+          <li>Menção nos posts coletivos</li>
+        </ul>
+        <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Tenho%20interesse%20na%20cota%20APOIADOR">Quero apoiar</a>
+      </div>
+    </div>
+    <p style="margin-top:18px; color:#999; font-size:14px">Vagas limitadas de verdade: o camarote tem 80 lugares e
+       as cotas respeitam esse limite. A próxima janela é só na temporada 2027, com prioridade pra quem já está dentro.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Na TV e nas <span>arquibancadas</span></h2>
+    <div class="tv">
+      <p>A Cascavel de Ouro é transmitida <strong>ao vivo</strong> — nas últimas edições, pelo <strong>BandSports</strong>
+         (TV por assinatura, Brasil inteiro), pela <strong>TV Paraná Turismo</strong> (TV aberta em todo o estado),
+         pela <strong>CATVE</strong> (25 cidades do oeste do Paraná) e no <strong>YouTube</strong>. Sua marca no carro #82
+         não fica só no autódromo: ela roda na tela de quem decide compra na sua região.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>O carro <span>#82</span> em ação</h2>
+    <div class="galeria">
+      <img src="fotos/pista.jpg" alt="Carro #82 na pista">
+      <img src="fotos/pelotao.jpg" alt="Carro #82 à frente do pelotão">
+      <img src="fotos/curvas.jpg" alt="Pelotão nas curvas do autódromo">
+      <img src="fotos/piloto.jpg" alt="Piloto pronto pra corrida">
+      <img src="fotos/boxes.jpg" alt="Nos boxes antes da prova">
+      <img src="fotos/dupla.jpg" alt="A dupla comemorando à noite">
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2>Vamos <span>acelerar juntos?</span></h2>
+    <p>Escolha a cota, a gente assina um contrato simples e a sua marca entra em cena — no carro, no camarote
+       e no digital, até o dia 21 de novembro.</p>
+    <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Quero%20conversar%20sobre%20o%20patroc%C3%ADnio%20da%20Cascavel%20de%20Ouro">💬 Chamar no WhatsApp</a>
+    <a class="btn btn-ghost" href="midia-kit-davi-vianna-82.pdf" download>📄 Mídia kit</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Davi Vianna &amp; Cezar Martins · Carro #82 · Cascavel de Ouro — 21 de novembro de 2026 ·
+    Instagram: <a href="https://www.instagram.com/pilotodavivianna/">@pilotodavivianna</a>
+  </div>
+</footer>
+
+</body>
+</html>
