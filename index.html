@@ -3,252 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; script-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'">
-<meta name="description" content="Davi Vianna & Cezar Martins — Carro #82 na Cascavel de Ouro 2026. Patrocine o projeto: camarote para 80 convidados, marca no carro e transmissão na TV.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; script-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta name="description" content="Davi Vianna & Cezar Martins — Carro #82 na Cascavel de Ouro 2026. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de R$ 5.777.">
 <meta property="og:title" content="Cascavel de Ouro 2026 — Carro #82 · Davi Vianna & Cezar Martins">
-<meta property="og:description" content="Sua marca na prova mais tradicional do Paraná. Camarote para 80 convidados, cotas a partir de R$ 5.777.">
+<meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca comigo a partir de R$ 5.777.">
 <meta property="og:image" content="https://www.cascaveldeouro.com.br/fotos/hero.jpg">
 <title>Cascavel de Ouro 2026 — Carro #82 · Davi Vianna & Cezar Martins</title>
 <style>
+  @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Boldonse'; src: url('fonts/Boldonse-Regular.ttf') format('truetype'); font-display: swap; }
+  @font-face { font-family: 'Italiana'; src: url('fonts/Italiana-Regular.ttf') format('truetype'); font-display: swap; }
+  @font-face { font-family: 'Geist Mono'; src: url('fonts/GeistMono-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Geist Mono'; src: url('fonts/GeistMono-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Work Sans'; src: url('fonts/WorkSans-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Work Sans'; src: url('fonts/WorkSans-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root { --ouro: #f5b800; --preto: #0d0d0d; --grafite: #1a1a1a; --branco: #ffffff; }
+  :root {
+    --laranja: #F57C1F;
+    --laranja-vivo: #FF8A2A;
+    --noite: #060607;
+    --farol: #E8E6E1;
+    --cinza: #8E8C86;
+    --linha: #232320;
+  }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--preto); color: #eee; line-height: 1.6; }
+  body { font-family: 'Work Sans', Arial, sans-serif; background: var(--noite); color: var(--farol); line-height: 1.6; }
   img { max-width: 100%; display: block; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-  section { padding: 64px 0; }
-  h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 900; margin-bottom: 16px; }
-  h2 span { color: var(--ouro); }
-  .checkers { height: 14px; background: repeating-conic-gradient(#fff 0% 25%, #0d0d0d 0% 50%) 0 0 / 14px 14px; }
+  a { color: inherit; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+  .display { font-family: 'Big Shoulders', 'Arial Narrow', sans-serif; font-weight: 700; }
+  .joia { font-family: 'Italiana', serif; font-weight: 400; }
+  .mono { font-family: 'Geist Mono', 'Courier New', monospace; }
+  .monumento { font-family: 'Boldonse', 'Arial Black', sans-serif; }
 
-  /* hero */
-  .hero { position: relative; min-height: min(92vh, 820px); display: flex; align-items: flex-end;
-          background: linear-gradient(160deg, #0d0d0d 0%, #1a1a1a 55%, #2b2100 100%); overflow: hidden; }
+  section { padding: 74px 0; }
+  .kicker { font-size: 11px; letter-spacing: 4px; color: var(--laranja); text-transform: uppercase; }
+  .headline { font-size: clamp(34px, 6vw, 58px); line-height: .95; text-transform: uppercase; color: var(--farol); margin-top: 10px; font-style: italic; }
+  .headline span { color: var(--laranja-vivo); }
+  .lead { font-size: 16px; line-height: 1.8; color: #B9B7B1; max-width: 680px; margin-top: 18px; }
+  .lead strong { color: var(--farol); }
+
+  /* telemetria */
+  .tele-bar { display: flex; justify-content: space-between; gap: 12px; padding: 14px 22px; max-width: 1060px;
+      margin: 0 auto; font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; }
+  .tele-bar b { color: var(--laranja); font-weight: 700; }
+  .regua { height: 1px; background: linear-gradient(90deg, var(--laranja), transparent); max-width: 1016px; margin: 0 auto; }
+
+  /* ===== HERO ===== */
+  .hero { position: relative; min-height: min(94vh, 860px); display: flex; align-items: flex-end; overflow: hidden; }
   .hero-img { position: absolute; inset: 0; }
-  .hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: .45; }
-  .hero-content { position: relative; padding: 60px 0 70px; }
-  .tag { display: inline-block; border: 2px solid var(--ouro); color: var(--ouro); padding: 8px 16px;
-         font-weight: 700; letter-spacing: 2px; font-size: 13px; margin-bottom: 18px; }
-  .hero h1 { font-size: clamp(38px, 7vw, 72px); font-weight: 900; line-height: 1.03; color: #fff; }
-  .hero h1 .num { color: var(--ouro); }
-  .hero p.sub { font-size: clamp(16px, 2.4vw, 21px); color: #ddd; margin: 12px 0 26px; }
-  .evento-badge { display: inline-block; background: var(--ouro); color: var(--preto); padding: 12px 22px;
-                  font-weight: 800; font-size: clamp(15px, 2.2vw, 19px); margin-bottom: 28px; }
-  .btn { display: inline-block; padding: 16px 30px; border-radius: 8px; font-weight: 800; font-size: 17px;
-         text-decoration: none; transition: transform .15s ease; }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-wpp { background: #25d366; color: #fff; }
-  .btn-ghost { border: 2px solid var(--ouro); color: var(--ouro); margin-left: 10px; }
-  @media (max-width: 560px) { .btn-ghost { margin-left: 0; margin-top: 10px; } }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  .hero-img::after { content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(6,6,7,.9) 0%, rgba(6,6,7,.25) 32%, rgba(6,6,7,.15) 52%, rgba(6,6,7,.97) 82%); }
+  .hero-content { position: relative; z-index: 2; width: 100%; padding: 46px 0 44px; }
+  .hero .prova { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .hero .nome-prova { font-size: clamp(26px, 4.4vw, 42px); color: var(--laranja-vivo); letter-spacing: 3px; }
+  .hero .dados { font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; }
+  .hero h1 { font-size: clamp(52px, 11vw, 118px); line-height: .88; color: var(--farol); text-transform: uppercase;
+      font-style: italic; margin-top: 10px; }
+  .hero h1 .num { color: var(--laranja-vivo); }
+  .hero .dupla { margin-top: 12px; font-size: 12px; letter-spacing: 4px; color: var(--farol); text-transform: uppercase; }
+  .hero .dupla b { color: var(--laranja-vivo); }
+  .hero .frase { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--laranja);
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .statement { font-size: clamp(24px, 4.2vw, 40px); line-height: 1; text-transform: uppercase; font-style: italic; color: var(--farol); }
+  .statement em { font-style: italic; color: var(--laranja-vivo); }
+  .cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
+  .slab { display: inline-block; background: var(--laranja-vivo); color: var(--noite); padding: 15px 28px;
+      transform: skewX(-10deg); text-decoration: none; font-size: 17px; letter-spacing: 1px; text-transform: uppercase; }
+  .slab > span { display: inline-block; transform: skewX(10deg); }
+  .slab:hover { background: #FFA050; }
+  .ghost { display: inline-block; border: 1px solid var(--laranja); color: var(--laranja-vivo); padding: 15px 28px;
+      transform: skewX(-10deg); text-decoration: none; font-size: 17px; letter-spacing: 1px; text-transform: uppercase; }
+  .ghost > span { display: inline-block; transform: skewX(10deg); }
+  .ghost:hover { background: rgba(245,124,31,.12); }
 
-  /* números */
-  .nums { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-top: 30px; }
-  .num-card { background: var(--grafite); border-top: 4px solid var(--ouro); border-radius: 8px; padding: 22px; text-align: center; }
-  .num-card .n { font-size: 34px; font-weight: 900; color: var(--ouro); }
-  .num-card .l { font-size: 14px; color: #bbb; margin-top: 4px; }
+  /* ===== telerows ===== */
+  .telerows { margin-top: 40px; }
+  .telerow { display: flex; align-items: baseline; gap: 26px; padding: 16px 0; border-top: 1px solid var(--linha); }
+  .telerow:last-child { border-bottom: 1px solid var(--linha); }
+  .telerow .id { font-size: 10px; color: var(--cinza); letter-spacing: 2px; min-width: 44px; }
+  .telerow .big { font-size: clamp(26px, 3.6vw, 36px); color: var(--laranja-vivo); min-width: 110px; line-height: 1; }
+  .telerow .desc { font-size: 13px; letter-spacing: 1.5px; color: var(--farol); text-transform: uppercase; }
+  @media (max-width: 560px) { .telerow { gap: 14px; } .telerow .big { min-width: 84px; } }
 
-  /* projeto */
-  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 28px; }
-  .card { background: var(--grafite); border-radius: 10px; padding: 26px; border-top: 4px solid var(--ouro); }
-  .card h3 { font-size: 19px; margin-bottom: 10px; color: #fff; }
-  .card ul { list-style: none; }
-  .card li { padding: 5px 0 5px 24px; position: relative; color: #ccc; font-size: 15px; }
-  .card li::before { content: '—'; position: absolute; left: 0; font-size: 12px; top: 9px; }
+  /* ===== palco ===== */
+  .palco-box { margin-top: 44px; border: 1px solid var(--laranja); padding: 30px 32px; position: relative; }
+  .palco-box .etiqueta { position: absolute; top: -10px; left: 24px; background: var(--noite); padding: 0 12px;
+      font-size: 10px; letter-spacing: 3px; color: var(--laranja); text-transform: uppercase; }
+  .palco-box p { font-size: clamp(19px, 3vw, 27px); line-height: 1.25; text-transform: uppercase; font-style: italic; color: var(--farol); }
+  .palco-box p em { font-style: italic; color: var(--laranja-vivo); }
 
-  /* cotas */
-  .cotas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 30px; }
-  .cota { background: var(--grafite); border-radius: 12px; padding: 28px 24px; border: 1px solid #2e2e2e;
-          display: flex; flex-direction: column; }
-  .cota.destaque { border: 2px solid var(--ouro); background: #201a05; }
-  .cota .nome { font-size: 20px; font-weight: 900; }
-  .cota .vagas { font-size: 12px; letter-spacing: 1px; color: #999; margin: 2px 0 14px; text-transform: uppercase; }
-  .cota .preco { font-size: 30px; font-weight: 900; color: var(--ouro); margin-bottom: 14px; }
-  .cota ul { list-style: none; flex: 1; margin-bottom: 18px; }
-  .cota li { padding: 4px 0 4px 22px; position: relative; font-size: 14.5px; color: #ccc; }
-  .cota li::before { content: '—'; position: absolute; left: 0; color: var(--ouro); }
-  .cota .btn { text-align: center; font-size: 15px; padding: 13px 10px; }
+  /* ===== vips ===== */
+  .vips { margin-top: 46px; }
+  .titulo-vip { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .titulo-vip h3 { font-size: clamp(24px, 3.4vw, 32px); color: var(--laranja-vivo); letter-spacing: 2px; }
+  .titulo-vip .nota { font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; }
+  .vip-lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0 34px; margin-top: 8px; }
+  .vip { padding: 14px 0 12px; border-bottom: 1px solid var(--linha); }
+  .vip .n { font-size: 22px; color: var(--farol); letter-spacing: 1px; }
+  .vip .d { font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; margin-top: 3px; }
+  .vip.aberto .n { color: var(--cinza); }
 
-  /* galeria */
-  .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 28px; }
-  .galeria img { border-radius: 10px; height: 200px; width: 100%; object-fit: cover; }
+  /* ===== cotas ===== */
+  .cota { padding: 30px 0 26px; border-top: 1px solid var(--linha); display: grid;
+      grid-template-columns: 52px 240px 1fr; gap: 26px; align-items: start; }
+  .cota:last-of-type { border-bottom: 1px solid var(--linha); }
+  @media (max-width: 760px) { .cota { grid-template-columns: 1fr; gap: 12px; } .cota .rank { display: none; } }
+  .cota .rank { font-size: 10px; letter-spacing: 2px; color: var(--cinza); padding-top: 10px; }
+  .nome-cota { font-size: clamp(26px, 3.6vw, 34px); letter-spacing: 2px; text-transform: uppercase; font-style: italic; color: var(--farol); line-height: 1; }
+  .cota.ouro-tier .nome-cota, .cota.ouro-tier .preco { color: var(--laranja-vivo); }
+  .preco { font-size: clamp(24px, 3.4vw, 32px); line-height: 1.05; color: var(--farol); margin-top: 6px; }
+  .negocie { display: inline-block; margin-top: 10px; border: 1px solid var(--laranja); color: var(--laranja-vivo);
+      padding: 9px 16px; text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      font-family: 'Geist Mono', monospace; }
+  .negocie:hover { background: rgba(245,124,31,.12); }
+  .tags { font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; margin-top: 10px; line-height: 2; }
+  .tags b { color: var(--laranja); }
+  .entregas div { font-size: 15px; color: #B9B7B1; line-height: 1.6; padding: 4px 0; }
+  .entregas div::before { content: '—'; color: var(--laranja); margin-right: 10px; }
+  .entregas b { color: var(--farol); }
+  .obs-limite { margin-top: 26px; font-size: 12px; letter-spacing: 1.5px; color: var(--cinza); text-transform: uppercase; line-height: 2; }
+  .obs-limite b { color: var(--laranja-vivo); }
 
-  /* transmissão */
-  .tv { background: var(--grafite); border-radius: 12px; padding: 30px; margin-top: 28px; }
-  .tv p { color: #ccc; font-size: 16px; }
-  .tv strong { color: var(--ouro); }
+  /* ===== galeria ===== */
+  .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 34px; }
+  .galeria img { height: 220px; width: 100%; object-fit: cover; }
 
-  /* cta final */
-  .cta-final { background: linear-gradient(160deg, #2b2100, #0d0d0d); text-align: center; }
-  .cta-final p { color: #ccc; max-width: 640px; margin: 0 auto 28px; font-size: 17px; }
+  /* ===== logos ===== */
+  .logos-strip { margin-top: 60px; border-top: 1px solid var(--laranja); padding-top: 26px; }
+  .logos-strip .titulo { font-size: 10px; letter-spacing: 3px; color: var(--cinza); text-transform: uppercase; margin-bottom: 22px; }
+  .logos-row { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
+  .logos-row img { opacity: .9; }
+  .logos-row .txt { font-size: 13px; letter-spacing: 2px; color: var(--farol); font-family: 'Geist Mono', monospace; line-height: 1.6; }
 
-  footer { border-top: 1px solid #262626; padding: 26px 0; font-size: 13px; color: #888; text-align: center; }
-  footer a { color: var(--ouro); text-decoration: none; }
+  /* ===== final ===== */
+  .final { position: relative; overflow: hidden; padding: 100px 0; }
+  .final .bg { position: absolute; inset: 0; }
+  .final .bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  .final .bg::after { content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(6,6,7,.96) 0%, rgba(6,6,7,.7) 40%, rgba(6,6,7,.96) 100%); }
+  .final .wrap { position: relative; z-index: 2; }
+  .passos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 40px; max-width: 860px; }
+  .passo { border-top: 1px solid var(--laranja); padding-top: 14px; }
+  .passo .num-p { font-size: 12px; color: var(--laranja-vivo); letter-spacing: 3px; }
+  .passo h4 { font-size: 20px; letter-spacing: 1.5px; text-transform: uppercase; font-style: italic; color: var(--farol); margin-top: 6px; }
+  .passo p { font-size: 13.5px; color: #A7A5A0; line-height: 1.6; margin-top: 4px; }
+  .final .cta-group { margin-top: 44px; }
+
+  footer { border-top: 1px solid var(--linha); padding: 26px 0; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+      font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; }
+  footer a { color: var(--laranja-vivo); text-decoration: none; }
 </style>
 </head>
 <body>
 
-<div class="checkers"></div>
+<div class="tele-bar mono"><span>PROJETO DE PATROCÍNIO · TEMPORADA 2026</span><span><b>21.11.2026 · PROVA NOTURNA</b></span></div>
+<div class="regua"></div>
 
+<!-- ============ HERO ============ -->
 <header class="hero">
-  <div class="hero-img"><img src="fotos/hero.jpg" alt="Carro #82 em alta velocidade à noite"></div>
+  <div class="hero-img"><img src="fotos/hero.jpg" alt="Carro #82 rasgando a noite de Cascavel"></div>
   <div class="wrap hero-content">
-    <span class="tag">PROJETO DE PATROCÍNIO 2026</span>
-    <h1>DAVI VIANNA <span class="num">#82</span></h1>
-    <p class="sub">Em dupla com <strong>Cezar Martins</strong> — o carro é nosso. <strong style="color:var(--ouro)">A noite é sua.</strong></p>
-    <div><span class="evento-badge">CASCAVEL DE OURO — 21 DE NOVEMBRO · AUTÓDROMO DE CASCAVEL</span></div>
-    <div>
-      <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Quero%20saber%20mais%20sobre%20o%20patroc%C3%ADnio%20do%20carro%20%2382%20na%20Cascavel%20de%20Ouro">Quero patrocinar</a>
-      <a class="btn btn-ghost" href="midia-kit-davi-vianna-82.pdf" download>Baixar mídia kit (PDF)</a>
+    <div class="prova">
+      <span class="nome-prova joia">Cascavel de Ouro</span>
+      <span class="dados mono">AUTÓDROMO ZILMAR BEUX · CASCAVEL — PR</span>
+    </div>
+    <h1 class="display">Davi Vianna <span class="num">#82</span></h1>
+    <div class="dupla mono">EM DUPLA COM <b>CEZAR MARTINS</b></div>
+    <div class="frase">
+      <div class="statement display">O carro é <em>nosso</em>.<br>A noite é <em>sua</em>.</div>
+      <div class="cta-group">
+        <a class="slab display" href="https://wa.me/5541988550223?text=Quero%20saber%20mais%20sobre%20o%20patroc%C3%ADnio%20do%20carro%20%2382%20na%20Cascavel%20de%20Ouro"><span>Quero patrocinar</span></a>
+        <a class="ghost display" href="midia-kit-davi-vianna-82.pdf" download><span>Baixar mídia kit</span></a>
+      </div>
     </div>
   </div>
 </header>
 
+<!-- ============ O EVENTO / NETWORKING ============ -->
 <section>
   <div class="wrap">
-    <h2>Uma corrida na pista. <span>Uma rodada de negócios</span> no camarote.</h2>
-    <p style="color:#ccc; max-width:760px">Quando as luzes acenderem em 21 de novembro, milhares de pessoas nas
-       arquibancadas e <strong style="color:#fff">quatro canais de TV ao vivo</strong> vão olhar pra pista. Mas as
-       conversas que valem dinheiro acontecem num lugar só: no camarote, onde <strong style="color:#fff">80 empresários,
-       influenciadores e decisores</strong> passam a noite inteira, com <strong style="color:#fff">open bar e open
-       food</strong>. E quem recebe, circula e fecha negócio como <strong style="color:#fff">dono da casa é você</strong>
-       — enquanto a cidade assiste de fora.</p>
-    <div class="nums">
-      <div class="num-card"><div class="n">80</div><div class="l">decisores num só lugar — recebidos por você</div></div>
-      <div class="num-card"><div class="n">21/11</div><div class="l">a noite mais aguardada do ano no Paraná</div></div>
-      <div class="num-card"><div class="n">4</div><div class="l">canais de TV mostrando onde você estava</div></div>
-      <div class="num-card"><div class="n">#82</div><div class="l">o seu nome dentro da disputa</div></div>
+    <div class="kicker mono">Setor 01 · O evento dentro do evento</div>
+    <h2 class="headline display">Uma corrida na pista.<br><span>Uma rodada de negócios</span> no camarote.</h2>
+    <p class="lead">Quando as luzes acenderem em 21 de novembro, milhares de pessoas nas arquibancadas e
+       <strong>quatro canais de TV ao vivo</strong> — BandSports, TV Paraná Turismo, CATVE e YouTube — vão olhar
+       pra pista. Mas as conversas que valem dinheiro acontecem num lugar só: no camarote, onde
+       <strong>80 empresários, influenciadores e decisores</strong> passam a noite inteira, com
+       <strong>open bar e open food</strong>. E quem recebe, circula e fecha negócio como
+       <strong>dono da casa é você</strong> — enquanto a cidade assiste de fora.</p>
+
+    <div class="telerows">
+      <div class="telerow"><span class="id mono">T-01</span><span class="big display">80</span><span class="desc mono">Decisores num só lugar — recebidos por você</span></div>
+      <div class="telerow"><span class="id mono">T-02</span><span class="big display">4</span><span class="desc mono">Canais de TV mostrando onde você estava</span></div>
+      <div class="telerow"><span class="id mono">T-03</span><span class="big display">21.11</span><span class="desc mono">A noite mais aguardada do ano no Paraná</span></div>
+      <div class="telerow"><span class="id mono">T-04</span><span class="big display">#82</span><span class="desc mono">O seu nome dentro da disputa</span></div>
     </div>
 
-    <div style="margin-top:26px; border:1px solid var(--ouro); border-radius:12px; padding:26px 28px; position:relative">
-      <span style="position:absolute; top:-11px; left:22px; background:var(--preto); padding:0 12px; font-size:12px; letter-spacing:2px; color:var(--ouro); text-transform:uppercase">O evento começa antes da corrida</span>
-      <p style="font-size:clamp(17px,2.6vw,22px); font-weight:800; color:#fff; line-height:1.3">Horas antes da largada, o palco abre — e <span style="color:var(--ouro)">todo patrocinador apresenta o seu negócio</span> pra plateia inteira. O microfone passa na sua mão.</p>
+    <div class="palco-box">
+      <span class="etiqueta mono">O evento começa antes da corrida</span>
+      <p class="display">Horas antes da largada, o palco abre — e <em>todo patrocinador apresenta o seu negócio</em> pra plateia inteira. O microfone passa na sua mão.</p>
     </div>
 
-    <div class="tv" style="margin-top:22px; border-left: 4px solid var(--ouro)">
-      <h3 style="font-size:20px; margin-bottom:10px">Presenças confirmadas <span style="color:var(--ouro)">no camarote</span></h3>
-      <p style="margin-bottom:14px; font-size:14.5px; color:#999">Gente que atrai gente — e negócios:</p>
-      <div style="display:flex; flex-wrap:wrap; gap:10px">
-        <span style="border:1px solid rgba(245,184,0,.5); background:rgba(245,184,0,.08); padding:8px 14px; border-radius:8px; font-weight:700; font-size:14.5px">Pyong Lee <span style="display:block; font-weight:400; font-size:12px; color:#aaa">hipnólogo e influenciador</span></span>
-        <span style="border:1px solid rgba(245,184,0,.5); background:rgba(245,184,0,.08); padding:8px 14px; border-radius:8px; font-weight:700; font-size:14.5px">Jorge Kotz <span style="display:block; font-weight:400; font-size:12px; color:#aaa">Fundador · Grupo X</span></span>
-        <span style="border:1px solid rgba(245,184,0,.5); background:rgba(245,184,0,.08); padding:8px 14px; border-radius:8px; font-weight:700; font-size:14.5px">Julian Amaral <span style="display:block; font-weight:400; font-size:12px; color:#aaa">empresário</span></span>
-        <span style="border:1px solid rgba(245,184,0,.5); background:rgba(245,184,0,.08); padding:8px 14px; border-radius:8px; font-weight:700; font-size:14.5px">Leonardo &amp; Karina Ebrahim <span style="display:block; font-weight:400; font-size:12px; color:#aaa">Ebrahim Clínica</span></span>
-        <span style="border:1px dashed #555; padding:8px 14px; border-radius:8px; font-weight:700; font-size:14.5px; color:#999">+ nomes a confirmar <span style="display:block; font-weight:400; font-size:12px; color:#777">a lista cresce toda semana</span></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="cols">
-      <div class="card">
-        <h3>Na pista</h3>
-        <ul>
-          <li>Logo adesivado no carro #82</li>
-          <li>Marca no macacão e boné dos pilotos</li>
-          <li>Exposição em pódio e entrevistas</li>
-          <li>Dupla de pilotos = o dobro de tempo de pista</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>No camarote</h3>
-        <ul>
-          <li>Convites pra sua equipe e clientes</li>
-          <li>Estande da marca e palco pra apresentar o seu negócio (cota Ouro)</li>
-          <li>Telão, ativações e sorteios</li>
-          <li>Open bar &amp; open food a noite inteira</li>
-          <li>Palco: o evento começa bem antes da corrida, com cada patrocinador apresentando o seu negócio</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>No digital</h3>
-        <ul>
-          <li>Posts e stories no @pilotodavivianna</li>
-          <li>Anúncios pagos na região de Cascavel</li>
-          <li>Vídeo pós-corrida com a marca</li>
-          <li>Relatório completo de entrega</li>
-        </ul>
+    <div class="vips">
+      <div class="titulo-vip"><h3 class="joia">Presenças confirmadas</h3><span class="nota mono">gente que atrai gente — e negócios</span></div>
+      <div class="vip-lista">
+        <div class="vip"><div class="n joia">Pyong Lee</div><div class="d mono">Hipnólogo e influenciador</div></div>
+        <div class="vip"><div class="n joia">Jorge Kotz</div><div class="d mono">Fundador · Grupo X</div></div>
+        <div class="vip"><div class="n joia">Julian Amaral</div><div class="d mono">Empresário</div></div>
+        <div class="vip"><div class="n joia">Leonardo &amp; Karina Ebrahim</div><div class="d mono">Ebrahim Clínica</div></div>
+        <div class="vip aberto"><div class="n joia">+ nomes a confirmar</div><div class="d mono">A lista cresce toda semana</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section style="padding-top:0">
+<!-- ============ COTAS ============ -->
+<section style="padding-top: 20px">
   <div class="wrap">
-    <h2>Quão grande vai ser <span>o seu nome?</span></h2>
-    <p style="color:#999; font-size:15px">Essa noite só tem 14 nomes: 3 Ouro, 5 Prata, 6 Bronze.</p>
-    <div class="cotas-grid">
-      <div class="cota destaque">
-        <div class="nome">OURO</div>
-        <div class="vagas">O dono da noite · só 3 vagas</div>
-        <div class="preco">R$ 34.777</div>
-        <ul>
-          <li>Seu nome disputando cada curva a 200 km/h — capô e laterais</li>
-          <li>Sua casa dentro do evento: estande exclusivo no camarote</li>
-          <li>Você abre a noite no palco do camarote</li>
-          <li>Cortesia: sua marca também corre com o MBR — Marcas Brasil Racing, nos eventos da Fórmula Truck</li>
-          <li>10 convites com o seu nome</li>
-          <li>Você no centro de todo conteúdo + relatório completo</li>
-        </ul>
-        <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Tenho%20interesse%20na%20cota%20OURO">Quero a cota Ouro</a>
+    <div class="kicker mono">Setor 02 · Essa noite só tem 14 nomes · 3 + 5 + 6</div>
+    <h2 class="headline display">Quão grande vai ser <span>o seu nome?</span></h2>
+    <p class="lead">Sua marca comigo <strong>a partir de R$ 5.777</strong>. Três formatos — a diferença é o tamanho do palco.</p>
+
+    <div style="margin-top: 38px">
+      <div class="cota ouro-tier">
+        <div class="rank mono">C-01</div>
+        <div>
+          <div class="nome-cota display">Ouro</div>
+          <div class="preco display">Sob consulta</div>
+          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20negociar%20a%20cota%20OURO%20da%20Cascavel%20de%20Ouro">Clique aqui e negocie</a>
+          <div class="tags mono"><b>SÓ 3 VAGAS</b> · O DONO DA NOITE<br>10 CONVITES NA SUA MÃO</div>
+        </div>
+        <div class="entregas">
+          <div><b>Seu nome disputando cada curva a 200 km/h</b> — capô e laterais do #82</div>
+          <div><b>Sua casa dentro do evento:</b> estande exclusivo no camarote</div>
+          <div><b>Você abre a noite no palco</b> — o primeiro negócio que a plateia inteira vai ouvir</div>
+          <div><b>Cortesia Ouro:</b> sua marca também corre a temporada com o MBR — Marcas Brasil Racing, nos eventos da Fórmula Truck</div>
+          <div><b>10 convites com o seu nome</b> — quem entra, entra porque você chamou</div>
+          <div>Você no centro de todo conteúdo + relatório completo pra mostrar depois</div>
+        </div>
       </div>
+
       <div class="cota">
-        <div class="nome">PRATA</div>
-        <div class="vagas">Na disputa · 5 vagas</div>
-        <div class="preco">R$ 12.777</div>
-        <ul>
-          <li>Seu nome no carro #82, na pista e na TV</li>
-          <li>Post dedicado só seu no Instagram</li>
-          <li>Seu momento no palco pra apresentar o seu negócio</li>
-          <li>6 convites VIP + presença no camarote</li>
-          <li>Relatório pós-prova com o seu nome em cena</li>
-        </ul>
-        <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Tenho%20interesse%20na%20cota%20PRATA">Quero a cota Prata</a>
+        <div class="rank mono">C-02</div>
+        <div>
+          <div class="nome-cota display">Prata</div>
+          <div class="preco display">Sob consulta</div>
+          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20negociar%20a%20cota%20PRATA%20da%20Cascavel%20de%20Ouro">Clique aqui e negocie</a>
+          <div class="tags mono">5 VAGAS · NA DISPUTA<br>6 CONVITES VIP</div>
+        </div>
+        <div class="entregas">
+          <div><b>Seu nome no carro #82</b>, na pista e na TV</div>
+          <div><b>Seu momento no palco</b> pra apresentar o seu negócio</div>
+          <div><b>Post dedicado só seu</b> no @pilotodavivianna + presença no camarote</div>
+          <div>Relatório pós-prova com o seu nome em cena pra mostrar a quem importa</div>
+        </div>
       </div>
+
       <div class="cota">
-        <div class="nome">BRONZE</div>
-        <div class="vagas">Dentro da festa · 6 vagas</div>
-        <div class="preco">R$ 5.777</div>
-        <ul>
-          <li>Você no telão a noite inteira, diante do camarote</li>
-          <li>Seu momento no palco pra apresentar o seu negócio</li>
-          <li>3 lugares na noite mais disputada do ano</li>
-          <li>Seu nome nos posts do projeto</li>
-        </ul>
-        <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Tenho%20interesse%20na%20cota%20BRONZE">Quero a cota Bronze</a>
+        <div class="rank mono">C-03</div>
+        <div>
+          <div class="nome-cota display">Bronze</div>
+          <div class="preco display">R$ 5.777</div>
+          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20a%20cota%20BRONZE%20da%20Cascavel%20de%20Ouro">Quero essa cota</a>
+          <div class="tags mono">6 VAGAS · DENTRO DA FESTA<br>3 CONVITES VIP</div>
+        </div>
+        <div class="entregas">
+          <div><b>Você no telão</b> a noite inteira, diante de todo o camarote</div>
+          <div><b>Seu momento no palco</b> pra apresentar o seu negócio</div>
+          <div>Seu nome nos posts do projeto + 3 lugares na noite mais disputada do ano</div>
+        </div>
       </div>
     </div>
-    <p style="margin-top:18px; color:#999; font-size:14px"><strong style="color:var(--ouro)">São 14 nomes. Fechou, acabou.</strong>
-       Quem está dentro passa a noite recebendo — quem ficou de fora espera a temporada 2027, atrás de quem já está.</p>
 
-    <div style="margin-top:34px; border-top:1px solid #2e2e2e; padding-top:22px">
-      <p style="color:#999; font-size:13px; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px">Já aceleram com a gente</p>
-      <div style="display:flex; flex-wrap:wrap; gap:26px; align-items:center">
-        <img src="fotos/logos/steelmol-branco.png" alt="Steelmol" style="height:26px; opacity:.9">
-        <img src="fotos/logos/sieger-branco.png" alt="Sieger Chemical" style="height:36px; opacity:.9">
-        <img src="fotos/logos/evolutte-branco.png" alt="Evolutte Empreendimentos" style="height:44px; opacity:.9">
-        <img src="fotos/logos/usina82-branco.png" alt="Usina 82" style="height:24px; opacity:.9">
-        <span style="font-weight:700; font-size:14px; color:#ddd; letter-spacing:1px">CLÍNICA EBRAHIM</span>
-      </div>
-    </div>
+    <p class="obs-limite mono"><b>SÃO 14 NOMES. FECHOU, ACABOU.</b> QUEM ESTÁ DENTRO PASSA A NOITE RECEBENDO —
+       QUEM FICOU DE FORA ESPERA A TEMPORADA 2027, ATRÁS DE QUEM JÁ ESTÁ.</p>
   </div>
 </section>
 
-<section style="padding-top:0">
+<!-- ============ GALERIA ============ -->
+<section style="padding-top: 20px">
   <div class="wrap">
-    <h2>Na TV e nas <span>arquibancadas</span></h2>
-    <div class="tv">
-      <p>A Cascavel de Ouro é transmitida <strong>ao vivo</strong> — nas últimas edições, pelo <strong>BandSports</strong>
-         (TV por assinatura, Brasil inteiro), pela <strong>TV Paraná Turismo</strong> (TV aberta em todo o estado),
-         pela <strong>CATVE</strong> (25 cidades do oeste do Paraná) e no <strong>YouTube</strong>. Sua marca no carro #82
-         não fica só no autódromo: ela roda na tela de quem decide compra na sua região.</p>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <h2>O carro <span>#82</span> em ação</h2>
+    <div class="kicker mono">Setor 03 · O carro #82 em ação</div>
+    <h2 class="headline display">É o seu nome que eles <span>vão ver passar</span></h2>
     <div class="galeria">
       <img src="fotos/pista.jpg" alt="Carro #82 rasgando a noite">
       <img src="fotos/pelotao.jpg" alt="Ultrapassagem na noite de Cascavel">
@@ -257,23 +297,42 @@
       <img src="fotos/boxes.jpg" alt="O pelotão na largada">
       <img src="fotos/dupla.jpg" alt="A celebração na noite da vitória">
     </div>
+
+    <div class="logos-strip">
+      <div class="titulo mono">Já aceleram com a gente</div>
+      <div class="logos-row">
+        <img src="fotos/logos/steelmol-branco.png" alt="Steelmol" style="height:28px">
+        <img src="fotos/logos/sieger-branco.png" alt="Sieger Chemical" style="height:38px">
+        <img src="fotos/logos/evolutte-branco.png" alt="Evolutte Empreendimentos" style="height:48px">
+        <img src="fotos/logos/usina82-branco.png" alt="Usina 82" style="height:26px">
+        <span class="txt">CLÍNICA EBRAHIM</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="cta-final">
+<!-- ============ FECHAMENTO ============ -->
+<section class="final">
+  <div class="bg"><img src="fotos/dupla.jpg" alt="A noite da vitória em Cascavel"></div>
   <div class="wrap">
-    <h2>A noite de 21/11 vai acontecer. <span>Com ou sem você?</span></h2>
-    <p>Escolha o seu nome, a gente assina um contrato simples e você entra em cena — no carro, no camarote,
-       no palco e no feed, até o dia 21 de novembro.</p>
-    <a class="btn btn-wpp" href="https://wa.me/5541988550223?text=Quero%20conversar%20sobre%20o%20patroc%C3%ADnio%20da%20Cascavel%20de%20Ouro">Chamar no WhatsApp</a>
-    <a class="btn btn-ghost" href="midia-kit-davi-vianna-82.pdf" download>Mídia kit</a>
+    <div class="kicker mono">Setor 04 · Próximos passos</div>
+    <h2 class="headline display">A noite de 21/11 vai acontecer.<br><span>Com ou sem você?</span></h2>
+    <div class="passos">
+      <div class="passo"><div class="num-p mono">01</div><h4 class="display">Escolha o seu nome</h4><p>Ouro, Prata ou Bronze — enquanto um dos 14 lugares for seu.</p></div>
+      <div class="passo"><div class="num-p mono">02</div><h4 class="display">Contrato simples</h4><p>Tudo documentado, pagamento facilitado.</p></div>
+      <div class="passo"><div class="num-p mono">03</div><h4 class="display">Você em cena</h4><p>No carro, no camarote, no palco e no feed — até 21/11.</p></div>
+    </div>
+    <div class="cta-group">
+      <a class="slab display" href="https://wa.me/5541988550223?text=Quero%20conversar%20sobre%20o%20patroc%C3%ADnio%20da%20Cascavel%20de%20Ouro"><span>WhatsApp · (41) 98855-0223</span></a>
+      <a class="ghost display" href="midia-kit-davi-vianna-82.pdf" download><span>Mídia kit</span></a>
+    </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    Davi Vianna &amp; Cezar Martins · Carro #82 · Cascavel de Ouro — 21 de novembro de 2026 ·
-    Instagram: <a href="https://www.instagram.com/pilotodavivianna/">@pilotodavivianna</a>
+  <div class="wrap mono">
+    <span>DAVI VIANNA &amp; CEZAR MARTINS — CARRO #82 · CASCAVEL DE OURO 2026</span>
+    <span><a href="https://www.instagram.com/pilotodavivianna/">@PILOTODAVIVIANNA</a> · 24°59'S · 53°22'W — CASCAVEL, PR</span>
   </div>
 </footer>
 
