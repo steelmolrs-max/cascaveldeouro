@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; script-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'">
-<meta name="description" content="Davi Vianna & Cezar Martins — Carro #82 na Cascavel de Ouro 2026. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de R$ 5.777.">
-<meta property="og:title" content="Cascavel de Ouro 2026 — Carro #82 · Davi Vianna & Cezar Martins">
-<meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca comigo a partir de R$ 5.777.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; script-src 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta name="description" content="Davi Vianna #82 — Cascavel de Ouro e Cascavel de Prata 2026. Sua marca em DOIS carros. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de R$ 5.777.">
+<meta property="og:title" content="Cascavel de Ouro 2026 — Carro #82 · Davi Vianna · sua marca em dois carros">
+<meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca em dois carros a partir de R$ 5.777.">
 <meta property="og:image" content="https://www.cascaveldeouro.com.br/fotos/hero.jpg">
-<title>Cascavel de Ouro 2026 — Carro #82 · Davi Vianna & Cezar Martins</title>
+<title>Cascavel de Ouro 2026 — Carro #82 · Davi Vianna · sua marca em dois carros</title>
 <style>
   @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
   @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
@@ -107,6 +107,20 @@
   .vip .d { font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; margin-top: 3px; }
   .vip.aberto .n { color: var(--cinza); }
 
+  /* ===== contagem regressiva (hero) ===== */
+  .contagem { margin-top: 10px; font-size: 12px; letter-spacing: 2px; color: var(--laranja-vivo); }
+  .contagem b { font-size: 20px; letter-spacing: 1px; }
+
+  /* ===== as duas provas ===== */
+  .duas-provas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px;
+    border: 1px solid var(--linha); border-left: 3px solid var(--laranja-vivo); padding: 18px 20px; }
+  @media (max-width: 760px) { .duas-provas { grid-template-columns: 1fr; } }
+  .duas-provas > div { display: flex; flex-direction: column; gap: 4px; }
+  .duas-provas b { font-size: 20px; letter-spacing: 1px; text-transform: uppercase; }
+  .duas-provas span { font-size: 11px; letter-spacing: 1.5px; color: var(--cinza); }
+  .duas-provas p { grid-column: 1 / -1; margin: 4px 0 0; font-size: 11px; letter-spacing: 1.5px;
+    color: var(--laranja-vivo); border-top: 1px solid var(--linha); padding-top: 12px; }
+
   /* ===== cotas ===== */
   .cota { padding: 30px 0 26px; border-top: 1px solid var(--linha); display: grid;
       grid-template-columns: 52px 240px 1fr; gap: 26px; align-items: start; }
@@ -174,7 +188,8 @@
       <span class="dados mono">AUTÓDROMO ZILMAR BEUX · CASCAVEL — PR</span>
     </div>
     <h1 class="display">Davi Vianna <span class="num">#82</span></h1>
-    <div class="dupla mono">EM DUPLA COM <b>CEZAR MARTINS</b></div>
+    <div class="dupla mono">DUAS PROVAS · <b>CASCAVEL DE OURO</b> E <b>CASCAVEL DE PRATA</b></div>
+    <div class="contagem mono" id="contagem" aria-live="polite"></div>
     <div class="frase">
       <div class="statement display">O carro é <em>nosso</em>.<br>A noite é <em>sua</em>.</div>
       <div class="cta-group">
@@ -227,19 +242,27 @@
   <div class="wrap">
     <div class="kicker mono">Setor 02 · Essa noite só tem 14 nomes · 3 + 5 + 6</div>
     <h2 class="headline display">Quão grande vai ser <span>o seu nome?</span></h2>
-    <p class="lead">Sua marca comigo <strong>a partir de R$ 5.777</strong>. Três formatos — a diferença é o tamanho do palco.</p>
+    <p class="lead">Sua marca comigo <strong>a partir de R$ 5.777</strong> — e em <strong>dois carros</strong>, não em um.
+       Três formatos; a diferença é o tamanho do palco.</p>
+    <div class="duas-provas">
+      <div><b class="display">Cascavel de Ouro</b><span class="mono">21.11 · noturna · Davi Vianna #82</span></div>
+      <div><b class="display">Cascavel de Prata</b><span class="mono">Davi Vianna e Julian Amaral</span></div>
+      <p class="mono">Uma cota, presença nas duas provas. O mesmo investimento aparece duas vezes.</p>
+    </div>
 
     <div style="margin-top: 38px">
       <div class="cota ouro-tier">
         <div class="rank mono">C-01</div>
         <div>
           <div class="nome-cota display">Ouro</div>
-          <div class="preco display">Sob consulta</div>
+          <div class="preco display">R$ 25.997</div>
           <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20negociar%20a%20cota%20OURO%20da%20Cascavel%20de%20Ouro">Clique aqui e negocie</a>
           <div class="tags mono"><b>SÓ 3 VAGAS</b> · O DONO DA NOITE<br>10 CONVITES NA SUA MÃO</div>
         </div>
         <div class="entregas">
-          <div><b>Seu nome disputando cada curva a 200 km/h</b> — capô e laterais do #82</div>
+          <div><b>O carro corre com as SUAS cores</b> — a pintura do #82 é a da sua marca, não a nossa</div>
+          <div><b>Patrocinador máster:</b> a maior aplicação do carro é a sua, no capô e nas laterais</div>
+          <div><b>Sua marca nos DOIS carros</b> — Cascavel de Ouro (#82) e Cascavel de Prata (Davi Vianna e Julian Amaral)</div>
           <div><b>Sua casa dentro do evento:</b> estande exclusivo no camarote</div>
           <div><b>Você abre a noite no palco</b> — o primeiro negócio que a plateia inteira vai ouvir</div>
           <div><b>Cortesia Ouro:</b> sua marca também corre a temporada com o MBR — Marcas Brasil Racing, nos eventos da Fórmula Truck</div>
@@ -252,12 +275,12 @@
         <div class="rank mono">C-02</div>
         <div>
           <div class="nome-cota display">Prata</div>
-          <div class="preco display">Sob consulta</div>
+          <div class="preco display">R$ 14.997</div>
           <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20negociar%20a%20cota%20PRATA%20da%20Cascavel%20de%20Ouro">Clique aqui e negocie</a>
           <div class="tags mono">5 VAGAS · NA DISPUTA<br>6 CONVITES VIP</div>
         </div>
         <div class="entregas">
-          <div><b>Seu nome no carro #82</b>, na pista e na TV</div>
+          <div><b>Seu nome nos dois carros</b> — Cascavel de Ouro e Cascavel de Prata, na pista e na TV</div>
           <div><b>Seu momento no palco</b> pra apresentar o seu negócio</div>
           <div><b>Post dedicado só seu</b> no @davisteelmol + presença no camarote</div>
           <div>Relatório pós-prova com o seu nome em cena pra mostrar a quem importa</div>
@@ -273,6 +296,7 @@
           <div class="tags mono">6 VAGAS · DENTRO DA FESTA<br>3 CONVITES VIP</div>
         </div>
         <div class="entregas">
+          <div><b>Seu nome nos dois carros</b> — Cascavel de Ouro e Cascavel de Prata</div>
           <div><b>Você no telão</b> a noite inteira, diante de todo o camarote</div>
           <div><b>Seu momento no palco</b> pra apresentar o seu negócio</div>
           <div>Seu nome nos posts do projeto + 3 lugares na noite mais disputada do ano</div>
@@ -333,10 +357,27 @@
 
 <footer>
   <div class="wrap mono">
-    <span>DAVI VIANNA &amp; CEZAR MARTINS — CARRO #82 · CASCAVEL DE OURO 2026</span>
+    <span>DAVI VIANNA — CARRO #82 · CASCAVEL DE OURO E CASCAVEL DE PRATA 2026</span>
     <span><a href="https://www.instagram.com/davisteelmol/">@DAVISTEELMOL</a> · 24°59'S · 53°22'W — CASCAVEL, PR</span>
   </div>
 </footer>
 
+<script>
+// Contagem regressiva ate a prova. A escassez ja e o argumento central da
+// pagina — mostrar o numero caindo torna o prazo concreto em vez de abstrato.
+(function () {
+  var alvo = new Date("2026-11-21T20:00:00-03:00");
+  var el = document.getElementById("contagem");
+  if (!el) return;
+  function pintar() {
+    var faltam = Math.ceil((alvo - new Date()) / 86400000);
+    el.innerHTML = faltam > 0
+      ? "FALTAM <b>" + faltam + "</b> DIAS PARA A LARGADA"
+      : "A NOITE É HOJE";
+  }
+  pintar();
+  setInterval(pintar, 3600000);   // reconfere de hora em hora, para quem deixa a aba aberta
+})();
+</script>
 </body>
 </html>
