@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; script-src 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw='; frame-src 'none'; object-src 'none'; base-uri 'self'">
-<meta name="description" content="Davi Vianna #82 — Cascavel de Ouro e Cascavel de Prata 2026. Sua marca em DOIS carros. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de R$ 5.777.">
-<meta property="og:title" content="Cascavel de Ouro 2026 — Carro #82 · Davi Vianna · sua marca em dois carros">
-<meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca em dois carros a partir de R$ 5.777.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; script-src 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta name="description" content="Davi Vianna #36 — Cascavel de Ouro e Cascavel de Prata 2026. Sua marca em DOIS carros. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de 10x R$ 447.">
+<meta property="og:title" content="Cascavel de Ouro 2026 — Carro #36 · Davi Vianna · sua marca em dois carros">
+<meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca em dois carros a partir de 10x R$ 447.">
 <meta property="og:image" content="https://www.cascaveldeouro.com.br/fotos/hero.jpg">
-<title>Cascavel de Ouro 2026 — Carro #82 · Davi Vianna · sua marca em dois carros</title>
+<title>Cascavel de Ouro 2026 — Carro #36 · Davi Vianna · sua marca em dois carros</title>
 <style>
   @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
   @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
@@ -123,9 +123,10 @@
 
   /* ===== cotas ===== */
   .cota { padding: 30px 0 26px; border-top: 1px solid var(--linha); display: grid;
-      grid-template-columns: 52px 240px 1fr; gap: 26px; align-items: start; }
+      grid-template-columns: 52px 230px 132px 1fr; gap: 26px; align-items: start; }
   .cota:last-of-type { border-bottom: 1px solid var(--linha); }
-  @media (max-width: 760px) { .cota { grid-template-columns: 1fr; gap: 12px; } .cota .rank { display: none; } }
+  @media (max-width: 760px) { .cota { grid-template-columns: 1fr; gap: 16px; } .cota .rank { display: none; }
+      .convites-bloco { border-left: none; border-top: 2px solid var(--laranja); padding-left: 0; padding-top: 14px; } }
   .cota .rank { font-size: 10px; letter-spacing: 2px; color: var(--cinza); padding-top: 10px; }
   .nome-cota { font-size: clamp(26px, 3.6vw, 34px); letter-spacing: 2px; text-transform: uppercase; font-style: italic; color: var(--farol); line-height: 1; }
   .cota.ouro-tier .nome-cota, .cota.ouro-tier .preco { color: var(--laranja-vivo); }
@@ -172,6 +173,48 @@
   footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
       font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; }
   footer a { color: var(--laranja-vivo); text-decoration: none; }
+
+/* ===== v6: video ===== */
+.video-box { position: relative; border: 1px solid var(--linha); overflow: hidden; }
+.video-box video { width: 100%; display: block; }
+.video-legenda { position: absolute; left: 0; bottom: 0; right: 0; padding: 22px 20px 16px;
+    background: linear-gradient(180deg, transparent, rgba(6,6,7,.9)); pointer-events: none; }
+.video-legenda .t { font-family: 'Big Shoulders', 'Arial Narrow', sans-serif; font-weight: 700;
+    font-size: clamp(18px, 3.4vw, 30px); line-height: 1; text-transform: uppercase; color: #E8E6E1; }
+.video-legenda .t em { font-style: normal; color: var(--laranja-vivo); }
+/* ===== v6: transmissao ===== */
+.transmissao { margin-top: 30px; border-top: 1px solid var(--laranja); padding-top: 22px; }
+.tv-linha { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.tv-linha img { opacity: .95; }
+.tv-linha .mais { font-size: 11px; letter-spacing: 1.4px; color: var(--cinza);
+    text-transform: uppercase; line-height: 1.8; }
+.tv-linha .mais b { color: var(--farol); font-weight: 400; }
+.grade-num { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 18px; margin-top: 26px; }
+.grade-num .cel { border-top: 1px solid var(--linha); padding-top: 12px; }
+.grade-num .n { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700;
+    font-size: clamp(26px, 4.4vw, 40px); line-height: 1; color: var(--laranja-vivo); }
+.grade-num .r { font-size: 10.5px; letter-spacing: 1.4px; color: var(--cinza);
+    text-transform: uppercase; margin-top: 7px; line-height: 1.6; }
+@media (max-width: 620px) { .grade-num { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+/* ===== v6: convites em evidencia ===== */
+.convites-bloco { border-left: 2px solid var(--laranja); padding-left: 18px; }
+.conv-num { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700;
+    font-size: clamp(38px, 6vw, 56px); line-height: .9; color: var(--laranja-vivo); }
+.conv-txt { font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 1.6px;
+    color: var(--farol); text-transform: uppercase; line-height: 1.6; margin-top: 6px; }
+.parcela { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700;
+    font-size: clamp(30px, 5vw, 44px); line-height: 1; color: var(--farol); }
+.ouro-tier .parcela { color: var(--laranja-vivo); }
+.avista { font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 1.3px;
+    color: var(--cinza); text-transform: uppercase; margin-top: 8px; line-height: 1.8; }
+.fecho-oferta { margin-top: 26px; border: 1px solid var(--laranja); padding: 22px 24px;
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.fecho-oferta .destaque { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700;
+    font-size: clamp(19px, 3vw, 27px); line-height: 1.08; text-transform: uppercase; color: var(--farol); }
+.fecho-oferta .destaque em { font-style: normal; color: var(--laranja-vivo); }
+.fecho-oferta .nota { margin-left: auto; text-align: right; font-family: 'Geist Mono', monospace;
+    font-size: 10.5px; letter-spacing: 1.3px; color: var(--cinza); text-transform: uppercase; line-height: 1.8; }
+@media (max-width: 620px) { .fecho-oferta .nota { margin-left: 0; text-align: left; } }
 </style>
 </head>
 <body>
@@ -181,13 +224,13 @@
 
 <!-- ============ HERO ============ -->
 <header class="hero">
-  <div class="hero-img"><img src="fotos/hero.jpg" alt="Carro #82 rasgando a noite de Cascavel"></div>
+  <div class="hero-img"><img src="fotos/hero.jpg" alt="Carro rasgando a noite de Cascavel"></div>
   <div class="wrap hero-content">
     <div class="prova">
       <span class="nome-prova joia">Cascavel de Ouro</span>
       <span class="dados mono">AUTÓDROMO ZILMAR BEUX · CASCAVEL — PR</span>
     </div>
-    <h1 class="display">Davi Vianna <span class="num">#82</span></h1>
+    <h1 class="display">Davi Vianna <span class="num">#36</span></h1>
     <div class="dupla mono">DUAS PROVAS · <b>CASCAVEL DE OURO</b> E <b>CASCAVEL DE PRATA</b></div>
     <div class="contagem mono" id="contagem" aria-live="polite"></div>
     <div class="frase">
@@ -201,11 +244,24 @@
 </header>
 
 <!-- ============ O EVENTO / NETWORKING ============ -->
+<!-- ============ VIDEO OFICIAL ============ -->
+<section style="padding-bottom: 20px">
+  <div class="wrap">
+    <div class="video-box">
+      <video src="video/cascavel-de-ouro.mp4" poster="video/cascavel-poster.jpg"
+             autoplay muted loop playsinline preload="metadata"></video>
+      <div class="video-legenda">
+        <div class="t">É essa a noite<br>que <em>leva o seu nome</em>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="kicker mono">Setor 01 · O evento dentro do evento</div>
     <h2 class="headline display">Uma corrida na pista.<br><span>Uma rodada de negócios</span> no camarote.</h2>
-    <p class="lead">Quando as luzes acenderem em 21 de novembro, milhares de pessoas nas arquibancadas e
+    <p class="lead">Quando as luzes acenderem em 21 de novembro, na <strong>40ª Cascavel de Ouro</strong>, as arquibancadas e
        <strong>quatro canais de TV ao vivo</strong> — BandSports, TV Paraná Turismo, CATVE e YouTube — vão olhar
        pra pista. Mas as conversas que valem dinheiro acontecem num lugar só: no camarote, onde
        <strong>80 empresários, influenciadores e decisores</strong> passam a noite inteira —
@@ -216,7 +272,7 @@
       <div class="telerow"><span class="id mono">T-01</span><span class="big display">80</span><span class="desc mono">Decisores num só lugar — recebidos por você</span></div>
       <div class="telerow"><span class="id mono">T-02</span><span class="big display">4</span><span class="desc mono">Canais de TV mostrando onde você estava</span></div>
       <div class="telerow"><span class="id mono">T-03</span><span class="big display">21.11</span><span class="desc mono">A noite mais aguardada do ano no Paraná</span></div>
-      <div class="telerow"><span class="id mono">T-04</span><span class="big display">#82</span><span class="desc mono">O seu nome dentro da disputa</span></div>
+      <div class="telerow"><span class="id mono">T-04</span><span class="big display">#36</span><span class="desc mono">O seu nome dentro da disputa</span></div>
     </div>
 
     <div class="palco-box">
@@ -224,14 +280,18 @@
       <p class="display">Horas antes da largada, o palco abre — e <em>todo patrocinador apresenta o seu negócio</em> pra plateia inteira. O microfone passa na sua mão.</p>
     </div>
 
-    <div class="vips">
-      <div class="titulo-vip"><h3 class="joia">Presenças confirmadas</h3><span class="nota mono">gente que atrai gente — e negócios</span></div>
-      <div class="vip-lista">
-        <div class="vip"><div class="n joia">Pyong Lee</div><div class="d mono">Hipnólogo e influenciador</div></div>
-        <div class="vip"><div class="n joia">Jorge Kotz</div><div class="d mono">Fundador · Grupo X</div></div>
-        <div class="vip"><div class="n joia">Julian Amaral</div><div class="d mono">Empresário</div></div>
-        <div class="vip"><div class="n joia">Leonardo &amp; Karina Ebrahim</div><div class="d mono">Ebrahim Clínica</div></div>
-        <div class="vip aberto"><div class="n joia">+ nomes a confirmar</div><div class="d mono">A lista cresce toda semana</div></div>
+    <div class="transmissao">
+      <div class="kicker mono" style="margin-bottom:18px">Ao vivo, de dentro da noite</div>
+      <div class="tv-linha">
+        <img src="fotos/logos/bandsports.png" alt="BandSports" style="height:38px">
+        <img src="fotos/logos/youtube.svg" alt="YouTube" style="height:30px">
+        <div class="mais mono">E ainda <b>TV Paraná Turismo</b> (aberta, estado inteiro)<br>e <b>CATVE</b>, em 25 cidades do oeste</div>
+      </div>
+      <div class="grade-num">
+        <div class="cel"><div class="n">75 mil</div><div class="r mono">Lugares no<br>Zilmar Beux</div></div>
+        <div class="cel"><div class="n">59</div><div class="r mono">Carros<br>na pista</div></div>
+        <div class="cel"><div class="n">121</div><div class="r mono">Pilotos<br>de 7 estados</div></div>
+        <div class="cel"><div class="n">28</div><div class="r mono">Equipes<br>envolvidas</div></div>
       </div>
     </div>
   </div>
@@ -240,12 +300,12 @@
 <!-- ============ COTAS ============ -->
 <section style="padding-top: 20px">
   <div class="wrap">
-    <div class="kicker mono">Setor 02 · Essa noite só tem 14 nomes · 3 + 5 + 6</div>
+    <div class="kicker mono">Setor 02 · Três formatos · o que muda é o tamanho do seu nome</div>
     <h2 class="headline display">Quão grande vai ser <span>o seu nome?</span></h2>
-    <p class="lead">Sua marca comigo <strong>a partir de R$ 5.777</strong> — e em <strong>dois carros</strong>, não em um.
-       Três formatos; a diferença é o tamanho do palco.</p>
+    <p class="lead">Sua marca comigo <strong>a partir de 10x R$ 447</strong> — e em <strong>dois carros</strong>, não em um.
+       Você escolhe o tamanho do seu nome; os convites já saem com ele.</p>
     <div class="duas-provas">
-      <div><b class="display">Cascavel de Ouro</b><span class="mono">21.11 · noturna · Davi Vianna #82</span></div>
+      <div><b class="display">Cascavel de Ouro</b><span class="mono">21.11 · noturna · Davi Vianna #36</span></div>
       <div><b class="display">Cascavel de Prata</b><span class="mono">Davi Vianna e Julian Amaral</span></div>
       <p class="mono">Uma cota, presença nas duas provas. O mesmo investimento aparece duas vezes.</p>
     </div>
@@ -255,18 +315,21 @@
         <div class="rank mono">C-01</div>
         <div>
           <div class="nome-cota display">Ouro</div>
-          <div class="preco display">R$ 25.997</div>
-          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20negociar%20a%20cota%20OURO%20da%20Cascavel%20de%20Ouro">Clique aqui e negocie</a>
-          <div class="tags mono"><b>SÓ 3 VAGAS</b> · O DONO DA NOITE<br>10 CONVITES NA SUA MÃO</div>
+          <div class="parcela">10x R$ 1.477</div>
+          <div class="avista mono">ou R$ 14.770 à vista<br><b style="color:var(--laranja-vivo)">O dono da noite</b></div>
+          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20a%20cota%20OURO%20da%20Cascavel%20de%20Ouro%20(10x%20R$%201.477)">Quero essa cota</a>
+        </div>
+        <div class="convites-bloco">
+          <div class="conv-num">15</div>
+          <div class="conv-txt">Convites<br>no seu nome</div>
         </div>
         <div class="entregas">
-          <div><b>O carro corre com as SUAS cores</b> — a pintura do #82 é a da sua marca, não a nossa</div>
+          <div><b>O carro corre com as SUAS cores</b> — a pintura do #36 é a da sua marca, não a nossa</div>
           <div><b>Patrocinador máster:</b> a maior aplicação do carro é a sua, no capô e nas laterais</div>
-          <div><b>Sua marca nos DOIS carros</b> — Cascavel de Ouro (#82) e Cascavel de Prata (Davi Vianna e Julian Amaral)</div>
+          <div><b>Sua marca nos DOIS carros</b> — Cascavel de Ouro (#36) e Cascavel de Prata (Davi Vianna e Julian Amaral)</div>
           <div><b>Sua casa dentro do evento:</b> estande exclusivo no camarote</div>
           <div><b>Você abre a noite no palco</b> — o primeiro negócio que a plateia inteira vai ouvir</div>
-          <div><b>Cortesia Ouro:</b> sua marca também corre a temporada com o MBR — Marcas Brasil Racing</div>
-          <div><b>10 convites com o seu nome</b> — quem entra, entra porque você chamou</div>
+          <div><b>Cortesia:</b> sua marca também corre a temporada com o MBR — Marcas Brasil Racing</div>
           <div>Você no centro de todo conteúdo + relatório completo pra mostrar depois</div>
         </div>
       </div>
@@ -275,9 +338,13 @@
         <div class="rank mono">C-02</div>
         <div>
           <div class="nome-cota display">Prata</div>
-          <div class="preco display">R$ 14.997</div>
-          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20negociar%20a%20cota%20PRATA%20da%20Cascavel%20de%20Ouro">Clique aqui e negocie</a>
-          <div class="tags mono">5 VAGAS · NA DISPUTA<br>6 CONVITES VIP</div>
+          <div class="parcela">10x R$ 997</div>
+          <div class="avista mono">ou R$ 9.970 à vista<br><b>Nos dois carros</b></div>
+          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20a%20cota%20PRATA%20da%20Cascavel%20de%20Ouro%20(10x%20R$%20997)">Quero essa cota</a>
+        </div>
+        <div class="convites-bloco">
+          <div class="conv-num">10</div>
+          <div class="conv-txt">Convites<br>no seu nome</div>
         </div>
         <div class="entregas">
           <div><b>Seu nome nos dois carros</b> — Cascavel de Ouro e Cascavel de Prata, na pista e na TV</div>
@@ -291,37 +358,43 @@
         <div class="rank mono">C-03</div>
         <div>
           <div class="nome-cota display">Bronze</div>
-          <div class="preco display">R$ 5.777</div>
-          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20a%20cota%20BRONZE%20da%20Cascavel%20de%20Ouro">Quero essa cota</a>
-          <div class="tags mono">6 VAGAS · DENTRO DA FESTA<br>3 CONVITES VIP</div>
+          <div class="parcela">10x R$ 447</div>
+          <div class="avista mono">ou R$ 4.470 à vista<br><b>Nos dois carros</b></div>
+          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20a%20cota%20BRONZE%20da%20Cascavel%20de%20Ouro%20(10x%20R$%20447)">Quero essa cota</a>
+        </div>
+        <div class="convites-bloco">
+          <div class="conv-num">5</div>
+          <div class="conv-txt">Convites<br>no seu nome</div>
         </div>
         <div class="entregas">
           <div><b>Seu nome nos dois carros</b> — Cascavel de Ouro e Cascavel de Prata</div>
           <div><b>Você no telão</b> a noite inteira, diante de todo o camarote</div>
           <div><b>Seu momento no palco</b> pra apresentar o seu negócio</div>
-          <div>Seu nome nos posts do projeto + 3 lugares na noite mais disputada do ano</div>
+          <div>Seu nome nos posts do projeto, do primeiro contrato até a bandeirada</div>
         </div>
       </div>
     </div>
 
-    <p class="obs-limite mono"><b>SÃO 14 NOMES. FECHOU, ACABOU.</b> QUEM ESTÁ DENTRO PASSA A NOITE RECEBENDO —
-       QUEM FICOU DE FORA ESPERA A TEMPORADA 2027, ATRÁS DE QUEM JÁ ESTÁ.</p>
+    <div class="fecho-oferta">
+      <div class="destaque">Dez parcelas. <em>Nenhuma pergunta na sua mesa.</em><br>Os convites já saem com o seu nome.</div>
+      <div class="nota mono">O carro é adesivado em <b style="color:var(--farol)">outubro</b>.<br>Depois disso não entra mais marca.</div>
+    </div>
   </div>
 </section>
 
 <!-- ============ GALERIA ============ -->
 <section style="padding-top: 20px">
   <div class="wrap">
-    <div class="kicker mono">Setor 03 · O carro #82 em ação</div>
+    <div class="kicker mono">Setor 03 · O carro #36 em ação</div>
     <h2 class="headline display">É o seu nome que eles <span>vão ver passar</span></h2>
     <div class="galeria">
-      <img class="destaque" src="fotos/podio.jpg" alt="Davi Vianna no topo do pódio, com troféu na mão">
-      <img src="fotos/pista.jpg" alt="Carro #82 rasgando a noite">
+      <img class="destaque" src="fotos/celebracao.jpg" alt="A comemoração da dupla depois da bandeirada">
+      <img src="fotos/pista.jpg" alt="Carro rasgando a noite">
       <img src="fotos/pelotao.jpg" alt="Ultrapassagem na noite de Cascavel">
       <img src="fotos/curvas.jpg" alt="Disputa lado a lado a 200 km/h">
       <img src="fotos/piloto.jpg" alt="Davi Vianna pronto pra largada">
       <img src="fotos/boxes.jpg" alt="O pelotão na largada">
-      <img src="fotos/dupla.jpg" alt="A celebração na noite da vitória">
+      <img src="fotos/equipe.jpg" alt="A equipe ao lado do carro, no dia da prova">
     </div>
 
     <div class="logos-strip">
@@ -357,7 +430,7 @@
 
 <footer>
   <div class="wrap mono">
-    <span>DAVI VIANNA — CARRO #82 · CASCAVEL DE OURO E CASCAVEL DE PRATA 2026</span>
+    <span>DAVI VIANNA — CARRO #36 · CASCAVEL DE OURO E CASCAVEL DE PRATA 2026</span>
     <span><a href="https://www.instagram.com/davisteelmol/">@DAVISTEELMOL</a> · 24°59'S · 53°22'W — CASCAVEL, PR</span>
   </div>
 </footer>
