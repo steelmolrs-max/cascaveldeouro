@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; script-src 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; script-src 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw=' 'sha256-wlZkI4WegTekiiEY+mYagARd7VDGPSzIwfOBiD0RQcc='; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="description" content="Davi Vianna #36 — Cascavel de Ouro e Cascavel de Prata 2026. Sua marca em DOIS carros. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de 10x R$ 447.">
 <meta property="og:title" content="Cascavel de Ouro 2026 — Carro #36 · Davi Vianna · sua marca em dois carros">
 <meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca em dois carros a partir de 10x R$ 447.">
@@ -182,6 +182,20 @@
 .video-legenda .t { font-family: 'Big Shoulders', 'Arial Narrow', sans-serif; font-weight: 700;
     font-size: clamp(18px, 3.4vw, 30px); line-height: 1; text-transform: uppercase; color: #E8E6E1; }
 .video-legenda .t em { font-style: normal; color: var(--laranja-vivo); }
+.som-btn { position: absolute; top: 16px; right: 16px; z-index: 3; pointer-events: auto;
+    display: inline-flex; align-items: center; gap: 9px; cursor: pointer;
+    background: rgba(6,6,7,.72); border: 1px solid var(--laranja); color: var(--farol);
+    font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 1.6px;
+    text-transform: uppercase; padding: 10px 15px; transition: background .18s, color .18s; }
+.som-btn:hover { background: var(--laranja-vivo); color: var(--noite); }
+.som-btn svg { width: 15px; height: 15px; flex: none; }
+.som-btn .risco { display: none; }
+.som-btn.ligado .onda { display: inline; }
+.som-btn.ligado .risco { display: none; }
+.som-btn:not(.ligado) .onda { display: none; }
+.som-btn:not(.ligado) .risco { display: inline; }
+@media (max-width: 560px) { .som-btn .txt { display: none; } .som-btn { padding: 10px; } }
+
 /* ===== v6: transmissao ===== */
 .transmissao { margin-top: 30px; border-top: 1px solid var(--laranja); padding-top: 22px; }
 .tv-linha { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
@@ -248,8 +262,17 @@
 <section style="padding-bottom: 20px">
   <div class="wrap">
     <div class="video-box">
-      <video src="video/cascavel-de-ouro.mp4" poster="video/cascavel-poster.jpg"
+      <video id="videoCascavel" src="video/cascavel-de-ouro.mp4" poster="video/cascavel-poster.jpg"
              autoplay muted loop playsinline preload="metadata"></video>
+      <button type="button" class="som-btn" id="somBtn" aria-label="Ligar o som do vídeo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+          <g class="onda"><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M18.5 5.5a9 9 0 0 1 0 13"></path></g>
+          <g class="risco"><line x1="22" y1="9" x2="16" y2="15"></line><line x1="16" y1="9" x2="22" y2="15"></line></g>
+        </svg>
+        <span class="txt">Ligar o som</span>
+      </button>
       <div class="video-legenda">
         <div class="t">É essa a noite<br>que <em>leva o seu nome</em>.</div>
       </div>
@@ -450,6 +473,24 @@
   }
   pintar();
   setInterval(pintar, 3600000);   // reconfere de hora em hora, para quem deixa a aba aberta
+})();
+</script>
+
+<script>
+// Botao de som. O navegador so deixa o video comecar sozinho se ele estiver mudo,
+// entao ele nasce mudo e o visitante liga o som num clique.
+(function () {
+  var v = document.getElementById("videoCascavel");
+  var b = document.getElementById("somBtn");
+  if (!v || !b) return;
+  b.addEventListener("click", function () {
+    v.muted = !v.muted;
+    var ligado = !v.muted;
+    if (ligado) { v.volume = 1; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    b.classList.toggle("ligado", ligado);
+    b.querySelector(".txt").textContent = ligado ? "Desligar o som" : "Ligar o som";
+    b.setAttribute("aria-label", ligado ? "Desligar o som do vídeo" : "Ligar o som do vídeo");
+  });
 })();
 </script>
 </body>
