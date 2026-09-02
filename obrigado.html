@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; script-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; script-src 'sha256-V/D5ka157VOwQwJ68y0d2njDW6O5Gv3EDzesB0IeAr8='; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="robots" content="noindex">
 <meta name="description" content="Compra registrada do Camarote Box Connection na Cascavel de Ouro 2026.">
 <title>Obrigado · Camarote Box Connection — Cascavel de Ouro 2026</title>
@@ -109,19 +109,28 @@
 <main class="palco">
   <div class="bg"><img src="fotos/dupla.jpg" alt="A noite da vitória em Cascavel"></div>
   <div class="wrap">
-    <span class="selo mono">Compra registrada</span>
-    <div class="kicker mono" style="margin-top:26px">Nos vemos em 21 de novembro</div>
-    <h1 class="headline display">O seu lugar<br><span>está guardado.</span></h1>
-    <p class="lead">Obrigado. Recebemos a sua compra da entrada no camarote da <strong>40ª Cascavel de Ouro</strong>.
-       Assim que o Mercado Pago confirmar o pagamento, o seu ingresso sai para o seu e-mail.</p>
+    <span class="selo mono" id="selo">Conferindo o pagamento</span>
+    <div class="kicker mono" style="margin-top:26px" id="kicker">Um instante</div>
+    <h1 class="headline display" id="titulo">Conferindo<br><span>o seu pagamento.</span></h1>
+    <p class="lead" id="texto">Estamos conferindo o resultado do seu pagamento com o Mercado Pago.</p>
 
-    <div class="caixa">
+    <div class="caixa" id="blocoRecusa" hidden style="border-color:#c0392b">
+      <span class="etiqueta" style="color:#e74c3c">O que aconteceu</span>
+      <div class="nome-prod" style="font-size:22px">O pagamento <em>não foi aprovado</em></div>
+      <div class="sub-prod">O Mercado Pago recusou a transação, então <b>nada foi cobrado de você</b> e
+        nenhum ingresso foi emitido. Isso costuma acontecer por limite, por dados do cartão ou por uma
+        checagem de segurança do banco.<br><br>
+        O caminho mais simples é tentar de novo escolhendo <b>Pix</b> — costuma passar na hora, e no Pix
+        o estacionamento no dia da prova é cortesia.</div>
+    </div>
+
+    <div class="caixa" id="blocoGarantiu">
       <span class="etiqueta">O que você garantiu</span>
       <div class="nome-prod">Camarote <em>Box Connection</em></div>
       <div class="sub-prod">21.11.2026 · Autódromo Zilmar Beux · Cascavel — PR<br>Open bar · Open food · Uma pessoa</div>
     </div>
 
-    <div class="passos">
+    <div class="passos" id="passos" hidden>
       <div class="passo">
         <div class="num-p">01</div>
         <h4>O ingresso vai por e-mail</h4>
@@ -139,7 +148,7 @@
       </div>
     </div>
 
-    <div class="aviso-spam">
+    <div class="aviso-spam" id="avisoSpam" hidden>
       <b>Confira a caixa de spam ou lixo eletrônico.</b> É comum que o primeiro e-mail de um remetente novo
       caia lá. Se encontrar o ingresso no spam, marque como "não é spam" para os próximos avisos da noite
       chegarem direto na sua caixa de entrada.
@@ -147,6 +156,7 @@
 
     <div class="cta-group">
       <a class="slab" href="https://wa.me/5541988550223?text=Comprei%20o%20ingresso%20do%20Camarote%20Box%20Connection%20e%20quero%20confirmar%20o%20recebimento"><span>WhatsApp · (41) 98855-0223</span></a>
+      <a class="ghost" id="btnTentar" href="ingresso.html" hidden><span>Tentar de novo</span></a>
       <a class="ghost" href="index.html"><span>Voltar ao projeto</span></a>
     </div>
   </div>
@@ -158,6 +168,56 @@
     <span><a href="https://www.instagram.com/davisteelmol/">@DAVISTEELMOL</a> · 24°59'S · 53°22'W — CASCAVEL, PR</span>
   </div>
 </footer>
+
+<script>
+(function () {
+  // O Mercado Pago devolve o resultado do pagamento na propria URL de retorno
+  // (status / collection_status). Sem isso, esta pagina dizia "compra
+  // registrada" ate para pagamento RECUSADO, porque as tres back_urls
+  // (sucesso, pendente e falha) apontavam para ca.
+  //
+  // Regra de ouro: na duvida, NUNCA afirmar que a compra deu certo.
+  var q = new URLSearchParams(window.location.search);
+  var st = (q.get('status') || q.get('collection_status') || '').toLowerCase();
+
+  var el = function (id) { return document.getElementById(id); };
+  var selo = el('selo'), kicker = el('kicker'), titulo = el('titulo'), texto = el('texto');
+  var passos = el('passos'), spam = el('avisoSpam');
+  var garantiu = el('blocoGarantiu'), recusa = el('blocoRecusa'), tentar = el('btnTentar');
+
+  function mostrar(alvo, ligado) { if (alvo) { alvo.hidden = !ligado; } }
+
+  if (st === 'approved' || st === 'accredited') {
+    selo.textContent = 'Pagamento confirmado';
+    kicker.textContent = 'Nos vemos em 21 de novembro';
+    titulo.innerHTML = 'O seu lugar<br><span>está guardado.</span>';
+    texto.innerHTML = 'Pagamento confirmado. O seu ingresso do <strong>Camarote Box Connection</strong> já está a caminho do e-mail que você informou no pagamento.';
+    mostrar(garantiu, true); mostrar(passos, true); mostrar(spam, true); mostrar(recusa, false); mostrar(tentar, false);
+
+  } else if (st === 'pending' || st === 'in_process' || st === 'in_mediation' || st === 'authorized') {
+    selo.textContent = 'Pagamento em análise';
+    kicker.textContent = 'Falta pouco';
+    titulo.innerHTML = 'O pagamento<br><span>está sendo processado.</span>';
+    texto.innerHTML = 'O Mercado Pago ainda está processando o seu pagamento. <strong>Assim que ele for aprovado</strong>, o ingresso sai automaticamente para o seu e-mail. Se você pagou por boleto, isso pode levar até três dias úteis.';
+    mostrar(garantiu, true); mostrar(passos, true); mostrar(spam, true); mostrar(recusa, false); mostrar(tentar, false);
+
+  } else if (st === 'rejected' || st === 'cancelled' || st === 'refunded' || st === 'charged_back' || st === 'failure' || st === 'null') {
+    selo.textContent = 'Pagamento não aprovado';
+    kicker.textContent = 'Nada foi cobrado';
+    titulo.innerHTML = 'O pagamento<br><span>não passou.</span>';
+    texto.innerHTML = 'O seu pagamento foi recusado, então <strong>nada foi cobrado</strong> e nenhum ingresso foi emitido. Você pode tentar de novo abaixo.';
+    mostrar(garantiu, false); mostrar(passos, false); mostrar(spam, false); mostrar(recusa, true); mostrar(tentar, true);
+
+  } else {
+    // Sem informacao nenhuma: nao afirma nada.
+    selo.textContent = 'Conferindo o pagamento';
+    kicker.textContent = 'Um instante';
+    titulo.innerHTML = 'Confira o seu<br><span>e-mail em minutos.</span>';
+    texto.innerHTML = 'Não conseguimos ler o resultado do pagamento nesta tela. <strong>Se o pagamento foi aprovado</strong>, o ingresso chega ao seu e-mail em alguns minutos. Se não chegar, fale com a gente no WhatsApp abaixo que conferimos na hora.';
+    mostrar(garantiu, true); mostrar(passos, true); mostrar(spam, true); mostrar(recusa, false); mostrar(tentar, true);
+  }
+})();
+</script>
 
 </body>
 </html>
