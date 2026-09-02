@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net; script-src 'sha256-PpJqh/Fot8qa885PtpFWZ0nXqWTnPRCgrBp/i+l4nwg='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta name="robots" content="noindex">
+<meta name="description" content="Camarote Box Connection na Cascavel de Ouro 2026 — open bar e open food, a noite inteira entre os 80 decisores. Lote fechado de 20 ingressos, 10x R$ 57,70.">
+<title>Ingresso · Camarote Box Connection — Cascavel de Ouro 2026</title>
+<style>
+  @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Italiana'; src: url('fonts/Italiana-Regular.ttf') format('truetype'); font-display: swap; }
+  @font-face { font-family: 'Geist Mono'; src: url('fonts/GeistMono-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Geist Mono'; src: url('fonts/GeistMono-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Work Sans'; src: url('fonts/WorkSans-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Work Sans'; src: url('fonts/WorkSans-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  [hidden] { display: none !important; }   /* o [hidden] do navegador perde pra classe; aqui ele vence */
+  :root {
+    --laranja: #F57C1F;
+    --laranja-vivo: #FF8A2A;
+    --noite: #060607;
+    --farol: #E8E6E1;
+    --cinza: #8E8C86;
+    --linha: #232320;
+  }
+  body { font-family: 'Work Sans', Arial, sans-serif; background: var(--noite); color: var(--farol);
+      line-height: 1.6; overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 22px; }
+  .display { font-family: 'Big Shoulders', 'Arial Narrow', sans-serif; font-weight: 700; }
+  .joia { font-family: 'Italiana', serif; font-weight: 400; }
+  .mono { font-family: 'Geist Mono', 'Courier New', monospace; }
+
+  .tele-bar { display: flex; justify-content: space-between; gap: 12px; padding: 14px 22px; max-width: 1060px;
+      margin: 0 auto; font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; }
+  .tele-bar b { color: var(--laranja); font-weight: 700; }
+  .regua { height: 1px; background: linear-gradient(90deg, var(--laranja), transparent); max-width: 1016px; margin: 0 auto; }
+
+  .kicker { font-size: 11px; letter-spacing: 4px; color: var(--laranja); text-transform: uppercase; }
+  .headline { font-size: clamp(34px, 6vw, 58px); line-height: .95; text-transform: uppercase;
+      color: var(--farol); margin-top: 10px; font-style: italic; }
+  .headline span { color: var(--laranja-vivo); }
+  .lead { font-size: 16px; line-height: 1.8; color: #B9B7B1; max-width: 680px; margin-top: 18px; }
+  .lead strong { color: var(--farol); }
+
+  /* topo */
+  .topo { position: relative; overflow: hidden; padding: 54px 0 46px; }
+  .topo .bg { position: absolute; inset: 0; }
+  .topo .bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+  .topo .bg::after { content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(6,6,7,.9) 0%, rgba(6,6,7,.7) 40%, rgba(6,6,7,.98) 100%); }
+  .topo .wrap { position: relative; z-index: 2; }
+  .voltar { display: inline-block; font-family: 'Geist Mono', monospace; font-size: 10.5px;
+      letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; text-decoration: none;
+      border-bottom: 1px solid var(--linha); padding-bottom: 4px; }
+  .voltar:hover { color: var(--laranja-vivo); border-color: var(--laranja); }
+
+  main { padding: 8px 0 74px; }
+
+  .caixa { border: 1px solid var(--laranja); border-left: 3px solid var(--laranja-vivo);
+      padding: 30px 32px; position: relative; margin-top: 34px; }
+  .caixa .etiqueta { position: absolute; top: -10px; left: 24px; background: var(--noite); padding: 0 12px;
+      font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 3px;
+      color: var(--laranja); text-transform: uppercase; }
+  .grade { display: grid; grid-template-columns: 1fr 300px; gap: 34px; align-items: start; }
+  @media (max-width: 780px) { .grade { grid-template-columns: 1fr; gap: 26px; }
+      .caixa { padding: 28px 20px; }
+      .compra { border-left: none; border-top: 2px solid var(--laranja); padding-left: 0; padding-top: 18px; } }
+
+  .nome-prod { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700;
+      font-size: clamp(28px, 4.6vw, 40px); line-height: .98; letter-spacing: 2px;
+      text-transform: uppercase; font-style: italic; color: var(--farol); }
+  .nome-prod em { font-style: italic; color: var(--laranja-vivo); }
+  .sub-prod { font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 1.6px;
+      color: var(--cinza); text-transform: uppercase; margin-top: 8px; line-height: 1.8; }
+  .itens { margin-top: 18px; }
+  .itens div { font-size: 15px; color: #B9B7B1; line-height: 1.6; padding: 4px 0; }
+  .itens div::before { content: '—'; color: var(--laranja); margin-right: 10px; }
+  .itens b { color: var(--farol); }
+  .ressalva { margin-top: 22px; border-top: 1px solid var(--linha); padding-top: 14px;
+      font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 1.4px;
+      color: var(--cinza); text-transform: uppercase; line-height: 1.9; }
+  .ressalva b { color: var(--farol); font-weight: 400; }
+
+  .compra { border-left: 2px solid var(--laranja); padding-left: 18px; }
+  .parcela { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700;
+      font-size: clamp(34px, 5.6vw, 50px); line-height: .95; color: var(--laranja-vivo); }
+  .avista { font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 1.3px;
+      color: var(--cinza); text-transform: uppercase; margin-top: 8px; line-height: 1.8; }
+  .vagas { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 1.6px;
+      color: var(--laranja-vivo); text-transform: uppercase; margin-top: 16px; line-height: 1.7; }
+  .vagas.esgotado { color: var(--cinza); }
+
+  .slab { display: inline-block; background: var(--laranja-vivo); color: var(--noite); padding: 15px 28px;
+      transform: skewX(-10deg); text-decoration: none; font-size: 17px; letter-spacing: 1px;
+      text-transform: uppercase; border: 0; cursor: pointer; line-height: 1.2;
+      font-family: 'Big Shoulders', 'Arial Narrow', sans-serif; font-weight: 700; }
+  .slab > span { display: inline-block; transform: skewX(10deg); }
+  .slab:hover { background: #FFA050; }
+  .slab[disabled] { background: var(--linha); color: var(--cinza); cursor: default; }
+  .slab[disabled]:hover { background: var(--linha); }
+  .ghost { display: inline-block; border: 1px solid var(--laranja); color: var(--laranja-vivo); padding: 15px 28px;
+      transform: skewX(-10deg); text-decoration: none; font-size: 17px; letter-spacing: 1px;
+      text-transform: uppercase; font-family: 'Big Shoulders', 'Arial Narrow', sans-serif; font-weight: 700; }
+  .ghost > span { display: inline-block; transform: skewX(10deg); }
+  .ghost:hover { background: rgba(245,124,31,.12); }
+  .btn-area { margin-top: 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .btn-area .slab, .btn-area .ghost { max-width: 100%; }
+
+  .recado { margin-top: 16px; border: 1px solid var(--linha); border-left: 2px solid var(--laranja);
+      padding: 14px 16px; font-size: 13.5px; line-height: 1.65; color: #B9B7B1; }
+  .recado b { color: var(--farol); }
+  .recado[hidden] { display: none; }
+
+  .selo-pgto { margin-top: 14px; font-family: 'Geist Mono', monospace; font-size: 10px;
+      letter-spacing: 1.4px; color: var(--cinza); text-transform: uppercase; line-height: 1.9; }
+
+  .passos { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 26px;
+      margin-top: 44px; }
+  .passo { border-top: 1px solid var(--laranja); padding-top: 14px; }
+  .passo .num-p { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--laranja-vivo); letter-spacing: 3px; }
+  .passo h4 { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700; font-size: 20px;
+      letter-spacing: 1.5px; text-transform: uppercase; font-style: italic; color: var(--farol); margin-top: 6px; }
+  .passo p { font-size: 13.5px; color: #A7A5A0; line-height: 1.6; margin-top: 4px; }
+
+  footer { border-top: 1px solid var(--linha); padding: 26px 0; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+      font-size: 10px; letter-spacing: 2px; color: var(--cinza); text-transform: uppercase; }
+  footer a { color: var(--laranja-vivo); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="tele-bar mono"><span>INGRESSO · CAMAROTE BOX CONNECTION</span><span><b>21.11.2026 · PROVA NOTURNA</b></span></div>
+<div class="regua"></div>
+
+<header class="topo">
+  <div class="bg"><img src="fotos/pista.jpg" alt="Carro rasgando a noite de Cascavel"></div>
+  <div class="wrap">
+    <a class="voltar" href="index.html">Voltar para o projeto</a>
+    <div class="kicker mono" style="margin-top:26px">Entrada avulsa · sem cota de patrocínio</div>
+    <h1 class="headline display">Você dentro<br><span>da sala.</span></h1>
+    <p class="lead">O camarote da <strong>40ª Cascavel de Ouro</strong> é onde a noite realmente acontece:
+       <strong>80 empresários, influenciadores e decisores</strong> no mesmo lugar, do começo ao fim da prova.
+       Este ingresso é a sua entrada nessa sala — <strong>lote fechado de 20</strong>.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="caixa">
+      <span class="etiqueta">O que você está levando</span>
+      <div class="grade">
+        <div>
+          <div class="nome-prod">Camarote <em>Box Connection</em></div>
+          <div class="sub-prod">21.11.2026 · Autódromo Zilmar Beux · Cascavel — PR</div>
+          <div class="itens">
+            <div><b>Open bar a noite inteira</b> — a bebida já está paga quando você chega</div>
+            <div><b>Open food</b> — servido no camarote, do começo ao fim da prova</div>
+            <div><b>Seu lugar entre os 80 decisores</b> — a mesma sala dos patrocinadores e convidados</div>
+            <div><b>A Cascavel de Ouro vista de dentro</b> — a noite mais aguardada do ano no Paraná</div>
+          </div>
+          <div class="ressalva">O ingresso é <b>a entrada na sala</b>, para uma pessoa. Marca no carro,
+             estande e microfone no palco seguem exclusivos de quem fecha cota de patrocínio.</div>
+        </div>
+
+        <div class="compra">
+          <div class="parcela">10x R$ 57,70</div>
+          <div class="avista mono">ou R$ 577,00 à vista<br><b style="color:var(--farol)">Por pessoa</b></div>
+          <div class="vagas mono" id="vagas" aria-live="polite">Consultando as vagas do lote...</div>
+
+          <div class="btn-area">
+            <button type="button" class="slab" id="btnComprar">
+              <span id="btnTexto">Comprar meu ingresso</span>
+            </button>
+            <a class="ghost" id="btnWhats" href="https://wa.me/5541988550223?text=Quero%20um%20ingresso%20do%20Camarote%20Box%20Connection%20na%20Cascavel%20de%20Ouro" hidden><span>Falar no WhatsApp</span></a>
+          </div>
+
+          <div class="recado" id="recado" hidden></div>
+
+          <div class="selo-pgto mono">Pagamento pelo Mercado Pago<br>Cartão de crédito em até 10x sem juros ou Pix<br><b>No Pix, o estacionamento é cortesia</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="passos">
+      <div class="passo">
+        <div class="num-p">01</div>
+        <h4>Você paga</h4>
+        <p>O botão abre o Mercado Pago. Você escolhe cartão de crédito em até 10x sem juros ou Pix. Pagando no Pix, o estacionamento no dia da prova é cortesia — o seu ingresso já sai com esse selo.</p>
+      </div>
+      <div class="passo">
+        <div class="num-p">02</div>
+        <h4>O ingresso chega</h4>
+        <p>Assim que o pagamento é confirmado, o ingresso vai para o e-mail que você informar na compra.</p>
+      </div>
+      <div class="passo">
+        <div class="num-p">03</div>
+        <h4>21 de novembro</h4>
+        <p>Você apresenta o ingresso na entrada do camarote e a noite é sua.</p>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:34px">Ficou com dúvida antes de pagar?
+       <a href="https://wa.me/5541988550223?text=Tenho%20uma%20d%C3%BAvida%20sobre%20o%20ingresso%20do%20Camarote%20Box%20Connection" style="color:var(--laranja-vivo)">Chame no WhatsApp (41) 98855-0223</a>
+       — quem responde é a nossa equipe, não um robô.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap mono">
+    <span>DAVI VIANNA — CARRO #36 · CASCAVEL DE OURO E CASCAVEL DE PRATA 2026</span>
+    <span><a href="https://www.instagram.com/davisteelmol/">@DAVISTEELMOL</a> · 24°59'S · 53°22'W — CASCAVEL, PR</span>
+  </div>
+</footer>
+
+<script>
+// Venda do ingresso do camarote. Duas conversas com o servidor:
+//   1) na abertura, pergunta quantas vagas sobraram (so pra mostrar o numero);
+//   2) no clique, pede o link de pagamento e manda o navegador pra la.
+// Regra de ouro daqui: nenhum erro pode virar tela quebrada — sempre sobra
+// um recado em portugues claro e o WhatsApp como saida.
+(function () {
+  var API = "https://us-central1-steelmol.cloudfunctions.net/cascavelIngresso";
+  var elVagas = document.getElementById("vagas");
+  var btn = document.getElementById("btnComprar");
+  var btnTexto = document.getElementById("btnTexto");
+  var whats = document.getElementById("btnWhats");
+  var recado = document.getElementById("recado");
+  var ocupado = false;
+
+  function dizer(html) {
+    recado.innerHTML = html;
+    recado.hidden = false;
+  }
+  function mostrarWhats() { whats.hidden = false; }
+
+  function travarPorEsgotado() {
+    elVagas.textContent = "Lote esgotado";
+    elVagas.className = "vagas mono esgotado";
+    btn.disabled = true;
+    btnTexto.textContent = "Lote esgotado";
+    dizer("<b>Os 20 ingressos deste lote acabaram.</b> Se abrir vaga por desistência, avisamos "
+        + "quem estiver na lista de espera. Chame no WhatsApp para entrar nela.");
+    mostrarWhats();
+  }
+
+  // ---- 1) quantas vagas restam ----
+  function consultarVagas() {
+    if (!window.fetch) { elVagas.textContent = "Lote fechado de 20 ingressos"; return; }
+    fetch(API + "?acao=disponibilidade", { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || d.ok !== true) throw new Error("resposta inesperada");
+        var restam = parseInt(d.restantes, 10);
+        var total = parseInt(d.total, 10) || 20;
+        if (isNaN(restam)) throw new Error("sem numero");
+        if (restam <= 0) { travarPorEsgotado(); return; }
+        elVagas.textContent = "Restam " + restam + " de " + total + " ingressos";
+      })
+      .catch(function () {
+        // Nao sabemos o numero, mas a compra continua valendo: quem decide e o servidor no clique.
+        elVagas.textContent = "Lote fechado de 20 ingressos";
+      });
+  }
+
+  // ---- 2) comprar ----
+  function destinoConfiavel(url) {
+    return typeof url === "string"
+        && /^https:\/\/[a-z0-9.-]*(mercadopago|mercadolibre)\.com(\.br)?\//i.test(url);
+  }
+
+  function comprar() {
+    if (ocupado || btn.disabled) return;
+    ocupado = true;
+    recado.hidden = true;
+    btn.disabled = true;
+    btnTexto.textContent = "Abrindo o pagamento...";
+
+    function liberar(texto) {
+      ocupado = false;
+      btn.disabled = false;
+      btnTexto.textContent = texto || "Comprar meu ingresso";
+    }
+
+    if (!window.fetch) {
+      liberar("Tentar de novo");
+      dizer("<b>Seu navegador está desatualizado</b> e não consegue abrir o pagamento por aqui. "
+          + "Chame no WhatsApp que a gente envia o link direto.");
+      mostrarWhats();
+      return;
+    }
+
+    fetch(API + "?acao=comprar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ quantidade: 1 })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d && d.ok === true && destinoConfiavel(d.url)) {
+          btnTexto.textContent = "Redirecionando...";
+          window.location.href = d.url;
+          return;
+        }
+        if (d && d.motivo === "esgotado") { ocupado = false; travarPorEsgotado(); return; }
+        liberar("Tentar de novo");
+        dizer("<b>Não conseguimos abrir o pagamento agora.</b> Tente de novo em alguns segundos. "
+            + "Se continuar assim, chame no WhatsApp que a gente reserva o seu ingresso na mão.");
+        mostrarWhats();
+      })
+      .catch(function () {
+        liberar("Tentar de novo");
+        dizer("<b>A conexão falhou no meio do caminho.</b> Confira a internet e tente de novo. "
+            + "Se preferir, chame no WhatsApp que a gente resolve por lá.");
+        mostrarWhats();
+      });
+  }
+
+  btn.addEventListener("click", comprar);
+  consultarVagas();
+})();
+</script>
+</body>
+</html>

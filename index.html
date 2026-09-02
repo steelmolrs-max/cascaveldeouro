@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; script-src 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw=' 'sha256-wlZkI4WegTekiiEY+mYagARd7VDGPSzIwfOBiD0RQcc='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net; script-src 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw=' 'sha256-wlZkI4WegTekiiEY+mYagARd7VDGPSzIwfOBiD0RQcc=' 'sha256-xB1zvU4vXv6n8N7SZkJ8bNUatO2aB22qxp4Q1xieL0I='; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="description" content="Davi Vianna #36 — Cascavel de Ouro e Cascavel de Prata 2026. Sua marca em DOIS carros. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de 10x R$ 447.">
 <meta property="og:title" content="Cascavel de Ouro 2026 — Carro #36 · Davi Vianna · sua marca em dois carros">
 <meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca em dois carros a partir de 10x R$ 447.">
@@ -229,6 +229,39 @@
 .fecho-oferta .nota { margin-left: auto; text-align: right; font-family: 'Geist Mono', monospace;
     font-size: 10.5px; letter-spacing: 1.3px; color: var(--cinza); text-transform: uppercase; line-height: 1.8; }
 @media (max-width: 620px) { .fecho-oferta .nota { margin-left: 0; text-align: left; } }
+
+/* ===== v7: ingresso do camarote ===== */
+.ing-bloco { margin-top: 34px; border: 1px solid var(--laranja); border-left: 3px solid var(--laranja-vivo);
+    padding: 30px 32px; position: relative; }
+.ing-bloco .etiqueta { position: absolute; top: -10px; left: 24px; background: var(--noite); padding: 0 12px;
+    font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--laranja);
+    text-transform: uppercase; }
+.ing-grade { display: grid; grid-template-columns: 1fr 290px; gap: 34px; align-items: start; }
+@media (max-width: 760px) { .ing-grade { grid-template-columns: 1fr; gap: 24px; }
+    .ing-bloco { padding: 28px 20px; }
+    .ing-preco-caixa { border-left: none; border-top: 2px solid var(--laranja); padding-left: 0; padding-top: 16px; } }
+.ing-nome { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700;
+    font-size: clamp(28px, 4.6vw, 40px); line-height: .98; letter-spacing: 2px;
+    text-transform: uppercase; font-style: italic; color: var(--farol); }
+.ing-nome em { font-style: italic; color: var(--laranja-vivo); }
+.ing-sub { font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 1.6px;
+    color: var(--cinza); text-transform: uppercase; margin-top: 8px; line-height: 1.8; }
+.ing-itens { margin-top: 18px; }
+.ing-itens div { font-size: 15px; color: #B9B7B1; line-height: 1.6; padding: 4px 0; }
+.ing-itens div::before { content: '—'; color: var(--laranja); margin-right: 10px; }
+.ing-itens b { color: var(--farol); }
+.ing-preco-caixa { border-left: 2px solid var(--laranja); padding-left: 18px; }
+.ing-parcela { font-family: 'Big Shoulders','Arial Narrow',sans-serif; font-weight: 700;
+    font-size: clamp(34px, 5.6vw, 50px); line-height: .95; color: var(--laranja-vivo); }
+.ing-avista { font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 1.3px;
+    color: var(--cinza); text-transform: uppercase; margin-top: 8px; line-height: 1.8; }
+.ing-restam { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 1.6px;
+    color: var(--laranja-vivo); text-transform: uppercase; margin-top: 16px; line-height: 1.7; }
+.ing-cta { margin-top: 18px; }
+.ing-nota { margin-top: 22px; border-top: 1px solid var(--linha); padding-top: 14px;
+    font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 1.4px;
+    color: var(--cinza); text-transform: uppercase; line-height: 1.9; }
+.ing-nota b { color: var(--farol); font-weight: 400; }
 </style>
 </head>
 <body>
@@ -405,6 +438,45 @@
   </div>
 </section>
 
+<!-- ============ INGRESSO DO CAMAROTE ============ -->
+<section style="padding-top: 20px; padding-bottom: 20px">
+  <div class="wrap">
+    <div class="kicker mono">Setor 02-B · Para quem não vai levar cota</div>
+    <h2 class="headline display">Sem cota,<br><span>mas dentro da sala.</span></h2>
+    <p class="lead">A cota coloca o seu nome no carro. O ingresso coloca <strong>você dentro da mesma sala</strong> —
+       a noite inteira no camarote, entre os <strong>80 empresários, influenciadores e decisores</strong> que a
+       cidade tenta juntar o ano todo. <strong>Lote fechado de 20 ingressos</strong>: quando acabar, a lista fecha.</p>
+
+    <div class="ing-bloco">
+      <span class="etiqueta">Ingresso avulso · camarote</span>
+      <div class="ing-grade">
+        <div>
+          <div class="ing-nome">Camarote <em>Box Connection</em></div>
+          <div class="ing-sub">21.11.2026 · Autódromo Zilmar Beux · Cascavel — PR</div>
+          <div class="ing-itens">
+            <div><b>Open bar a noite inteira</b> — a bebida já está paga quando você chega</div>
+            <div><b>Open food</b> — servido no camarote, do começo ao fim da prova</div>
+            <div><b>Seu lugar entre os 80 decisores</b> — a mesma sala dos patrocinadores e convidados</div>
+            <div><b>A Cascavel de Ouro vista de dentro</b> — a noite mais aguardada do ano no Paraná</div>
+            <div><b>Estacionamento cortesia</b> — pagando no Pix, a vaga é por nossa conta</div>
+          </div>
+          <div class="ing-nota mono">O ingresso é <b>a entrada na sala</b>. Marca no carro, estande e microfone
+             no palco seguem exclusivos de quem fecha cota.</div>
+        </div>
+        <div class="ing-preco-caixa">
+          <div class="ing-parcela">10x R$ 57,70</div>
+          <div class="ing-avista mono">ou R$ 577,00 à vista<br><b style="color:var(--farol)">Por pessoa</b><br>
+             <b style="color:var(--laranja-vivo)">No Pix, estacionamento cortesia</b></div>
+          <div class="ing-restam" id="ingRestam" aria-live="polite">Lote fechado de 20 ingressos</div>
+          <div class="ing-cta">
+            <a class="slab display" href="ingresso.html"><span>Quero meu ingresso</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ GALERIA ============ -->
 <section style="padding-top: 20px">
   <div class="wrap">
@@ -491,6 +563,27 @@
     b.querySelector(".txt").textContent = ligado ? "Desligar o som" : "Ligar o som";
     b.setAttribute("aria-label", ligado ? "Desligar o som do vídeo" : "Ligar o som do vídeo");
   });
+})();
+</script>
+
+<script>
+// Vagas do lote de ingressos do camarote. O numero e so um reforco de escassez:
+// se a consulta falhar, o texto padrao (lote de 20) continua de pe e o botao segue valendo.
+(function () {
+  var el = document.getElementById("ingRestam");
+  if (!el || !window.fetch) return;
+  fetch("https://us-central1-steelmol.cloudfunctions.net/cascavelIngresso?acao=disponibilidade", { cache: "no-store" })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (!d || d.ok !== true) return;
+      var restam = parseInt(d.restantes, 10);
+      var total = parseInt(d.total, 10) || 20;
+      if (isNaN(restam)) return;
+      el.textContent = restam > 0
+        ? "Restam " + restam + " de " + total + " ingressos"
+        : "Lote esgotado";
+    })
+    .catch(function () {});
 })();
 </script>
 </body>
