@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self' blob:; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net; script-src 'sha256-BTkkdwicaEmKQLP8O4Pgs5DsugsQlTdIapFLCNojGm8='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self' blob:; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net; script-src 'sha256-0+cewWAsdT887Z39NtaOScoDTiKGx6OSHbWg9DE6tAA='; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#060607">
@@ -487,9 +487,16 @@
 
   function pintarLiberado(codigo, d) {
     falhaRecente = null;
-    abrirPainel("p-verde", "Ingresso conferido", "Pode entrar");
+    // Convite de convidado especial: entra a partir das 14:00, duas horas antes
+    // do publico pagante. A portaria precisa ver isso na tela para nao barrar
+    // quem chegar cedo com convite na mao.
+    var ehConvite = d.tipo === "convite";
+    abrirPainel("p-verde", ehConvite ? "Convite conferido" : "Ingresso conferido", "Pode entrar");
     if (d.nome) { $("pNome").textContent = d.nome; $("pNome").hidden = false; }
     var linhas = [];
+    if (ehConvite) {
+      linhas.push("<b>Convidado especial</b> &middot; entrada a partir das 14:00");
+    }
     var qtd = parseInt(d.quantidade, 10);
     if (!isNaN(qtd) && qtd > 0) {
       linhas.push("Vale por <b>" + qtd + (qtd > 1 ? " pessoas" : " pessoa") + "</b>");
@@ -510,9 +517,10 @@
     abrirPainel("p-ambar", "Atenção", "Já entrou");
     if (d.nome) { $("pNome").textContent = d.nome; $("pNome").hidden = false; }
     var hora = horaBrasilia(d.usadoEm);
+    var oQue = d.tipo === "convite" ? "Este convite" : "Este ingresso";
     $("pDetalhe").innerHTML = hora
-      ? "Este ingresso <b>entrou &agrave;s " + hora + "</b>. N&atilde;o pode entrar de novo."
-      : "Este ingresso <b>j&aacute; foi usado</b>. N&atilde;o pode entrar de novo.";
+      ? oQue + " <b>entrou &agrave;s " + hora + "</b>. N&atilde;o pode entrar de novo."
+      : oQue + " <b>j&aacute; foi usado</b>. N&atilde;o pode entrar de novo.";
     $("pCodigo").textContent = codigo;
 
     // Se a leitura anterior DESTE mesmo codigo caiu na rede ha pouco, a marcacao

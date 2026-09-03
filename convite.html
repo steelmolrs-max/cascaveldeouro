@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net; script-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#060607">
+<title>Convite de Convidado Especial — Camarote Box Connection</title>
+<style>
+  @font-face { font-family: 'Big Shoulders'; src: url('fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Geist Mono'; src: url('fonts/GeistMono-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+  @font-face { font-family: 'Geist Mono'; src: url('fonts/GeistMono-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Work Sans'; src: url('fonts/WorkSans-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'Work Sans'; src: url('fonts/WorkSans-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  [hidden] { display: none !important; }
+
+  :root {
+    --laranja: #FF8A2A;
+    --noite: #060607;
+    --farol: #E8E6E1;
+    --cinza: #8E8C86;
+    --linha: #232320;
+    --carvao: #1A1A18;
+    --verde: #0E7A33;
+    --vermelho: #9E1116;
+  }
+
+  body {
+    background: var(--noite);
+    color: var(--farol);
+    font-family: 'Work Sans', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .folha { max-width: 720px; margin: 0 auto; }
+
+  .topo { border-bottom: 1px solid var(--linha); padding-bottom: 18px; margin-bottom: 26px; }
+  .selo { color: var(--laranja); font-size: 12px; letter-spacing: 4px; text-transform: uppercase; }
+  h1 {
+    font-family: 'Big Shoulders', 'Work Sans', sans-serif;
+    font-weight: 700; font-size: 34px; line-height: 1.05; margin-top: 8px; letter-spacing: 0.5px;
+  }
+  .sub { color: var(--cinza); font-size: 14px; margin-top: 8px; line-height: 1.5; }
+
+  .cartao {
+    background: var(--carvao);
+    border: 1px solid var(--linha);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 20px;
+  }
+  .cartao h2 {
+    font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--cinza); font-weight: 700; margin-bottom: 16px;
+  }
+
+  label.rotulo {
+    display: block; font-size: 13px; color: var(--cinza);
+    margin: 14px 0 6px; letter-spacing: 0.4px;
+  }
+  label.rotulo:first-of-type { margin-top: 0; }
+  .opcional { color: #5F5E59; }
+
+  input[type=text], input[type=password], input[type=email], input[type=number], textarea, select {
+    width: 100%;
+    background: #101010;
+    border: 1px solid var(--linha);
+    border-radius: 8px;
+    color: var(--farol);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    padding: 13px 14px;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--laranja); }
+  textarea { resize: vertical; min-height: 64px; }
+
+  .botao {
+    display: block; width: 100%;
+    background: var(--laranja); color: #101010;
+    border: none; border-radius: 8px;
+    font-family: 'Work Sans', sans-serif; font-weight: 700; font-size: 16px;
+    padding: 15px; margin-top: 20px; cursor: pointer;
+    letter-spacing: 0.3px;
+  }
+  .botao:disabled { opacity: .55; cursor: default; }
+  .botao.secundario {
+    background: transparent; color: var(--farol);
+    border: 1px solid var(--linha);
+  }
+
+  .ver-senha { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: 14px; color: var(--cinza); }
+  .ver-senha input { width: 20px; height: 20px; }
+
+  .recado { margin-top: 14px; font-size: 14px; line-height: 1.5; }
+  .recado.erro { color: #FF9A93; }
+  .recado.bom { color: #7FD79B; }
+
+  .resultado { border-left: 3px solid var(--laranja); padding-left: 16px; }
+  .resultado .nome { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .codigo {
+    font-family: 'Geist Mono', Consolas, monospace; font-weight: 700;
+    font-size: 22px; color: var(--laranja); letter-spacing: 2px;
+    margin: 6px 0; word-break: break-all;
+  }
+  .linha-info { color: var(--cinza); font-size: 14px; margin-top: 8px; line-height: 1.6; }
+
+  table.lista { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.lista th {
+    text-align: left; color: var(--cinza); font-weight: 400; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    padding: 0 8px 10px 0; border-bottom: 1px solid var(--linha);
+  }
+  table.lista td { padding: 11px 8px 11px 0; border-bottom: 1px solid var(--linha); vertical-align: top; }
+  table.lista td.cod { font-family: 'Geist Mono', Consolas, monospace; color: var(--laranja); font-size: 13px; }
+  .marca-usado { color: #7FD79B; }
+  .rodape { color: #5F5E59; font-size: 12px; text-align: center; margin-top: 30px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="folha">
+
+  <div class="topo">
+    <div class="selo">Cascavel de Ouro</div>
+    <h1>Convite de convidado especial</h1>
+    <p class="sub">
+      Camarote Box Connection &middot; 21 de novembro de 2026 &middot; Aut&oacute;dromo de Cascavel<br>
+      Entrada do convidado especial: <strong>14:00 &agrave;s 24:00</strong> &middot; open bar e open food.<br>
+      Convite de cortesia &mdash; <strong>n&atilde;o</strong> desconta das 20 vagas &agrave; venda.
+    </p>
+  </div>
+
+  <!-- ------------------------------------------------------------- senha -->
+  <div class="cartao" id="telaSenha">
+    <h2>Entrar</h2>
+    <p class="sub" style="margin-top:0">Digite a senha do painel de convites. Ela fica guardada s&oacute; nesta aba do navegador.</p>
+    <label class="rotulo" for="senha">Senha</label>
+    <input type="password" id="senha" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="senha do painel">
+    <label class="ver-senha"><input type="checkbox" id="verSenha"> Mostrar a senha</label>
+    <button class="botao" id="btnEntrar">Entrar</button>
+    <p class="recado" id="recadoSenha" hidden></p>
+  </div>
+
+  <!-- ----------------------------------------------------------- emissão -->
+  <div class="cartao" id="telaForm" hidden>
+    <h2>Novo convite</h2>
+
+    <label class="rotulo" for="nome">Nome do convidado</label>
+    <input type="text" id="nome" autocomplete="off" placeholder="Nome completo, como sai no convite">
+
+    <label class="rotulo" for="cpf">CPF <span class="opcional">(opcional)</span></label>
+    <input type="text" id="cpf" inputmode="numeric" autocomplete="off" placeholder="Só números">
+
+    <label class="rotulo" for="email">E-mail <span class="opcional">(opcional &mdash; se preencher, o convite j&aacute; vai por e-mail)</span></label>
+    <input type="email" id="email" autocomplete="off" spellcheck="false" placeholder="convidado@email.com">
+
+    <label class="rotulo" for="quantidade">Quantas pessoas este convite vale</label>
+    <select id="quantidade">
+      <option value="1" selected>1 pessoa</option>
+      <option value="2">2 pessoas</option>
+      <option value="3">3 pessoas</option>
+      <option value="4">4 pessoas</option>
+      <option value="5">5 pessoas</option>
+      <option value="6">6 pessoas</option>
+      <option value="8">8 pessoas</option>
+      <option value="10">10 pessoas</option>
+    </select>
+
+    <label class="rotulo" for="observacao">Observa&ccedil;&atilde;o <span class="opcional">(s&oacute; voc&ecirc; v&ecirc;)</span></label>
+    <textarea id="observacao" placeholder="Ex.: patrocinador da cota prata"></textarea>
+
+    <button class="botao" id="btnEmitir">Emitir convite</button>
+    <button class="botao secundario" id="btnSair">Sair</button>
+    <p class="recado" id="recadoForm" hidden></p>
+  </div>
+
+  <!-- ---------------------------------------------------------- resultado -->
+  <div class="cartao" id="telaResultado" hidden>
+    <h2>Convite emitido</h2>
+    <div class="resultado">
+      <div class="nome" id="rNome"></div>
+      <div class="linha-info" id="rResumo"></div>
+      <div id="rCodigos"></div>
+    </div>
+    <button class="botao" id="btnBaixar">Baixar o convite em PDF</button>
+    <button class="botao secundario" id="btnOutro">Emitir outro convite</button>
+    <p class="recado" id="recadoResultado" hidden></p>
+  </div>
+
+  <!-- ----------------------------------------------------------- listagem -->
+  <div class="cartao" id="telaLista" hidden>
+    <h2>Convites j&aacute; emitidos</h2>
+    <p class="linha-info" id="resumoLista" style="margin-top:0">&mdash;</p>
+    <div id="tabelaLista"></div>
+    <button class="botao secundario" id="btnAtualizar">Atualizar a lista</button>
+  </div>
+
+  <p class="rodape">
+    P&aacute;gina de uso interno. O convite emitido aqui vale na portaria e n&atilde;o ocupa vaga do lote de venda.
+  </p>
+</div>
+<script src="convite.js"></script>
+</body>
+</html>
