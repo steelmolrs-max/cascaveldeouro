@@ -263,29 +263,18 @@
     color: var(--cinza); text-transform: uppercase; line-height: 1.9; }
 .ing-nota b { color: var(--farol); font-weight: 400; }
 
-/* ===== v8: patrocinadores confirmados ===== */
-.pat-grade { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 14px; margin-top: 34px; }
+/* ===== v8: patrocinadores confirmados (sem cota: todos com o mesmo peso) ===== */
+.pat-grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 34px; }
 .pat-card { border: 1px solid var(--linha); display: flex; flex-direction: column; min-width: 0; }
-.pat-card.ouro { border: 1px solid var(--laranja); border-left: 3px solid var(--laranja-vivo); }
 .pat-logo { height: 170px; display: flex; align-items: center; justify-content: center; padding: 18px;
     background: var(--noite); border-bottom: 1px solid var(--linha); }
-.pat-logo img { max-height: 100px; max-width: 80%; width: auto; height: auto; object-fit: contain; }
-.pat-card.ouro .pat-logo { border-bottom-color: var(--laranja); }
-.pat-card.ouro .pat-logo img { max-height: 124px; }
+.pat-logo img { max-height: 110px; max-width: 80%; width: auto; height: auto; object-fit: contain; }
 .pat-info { padding: 16px 18px 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex: 1; }
 .pat-nome { font-size: clamp(19px, 2.2vw, 24px); line-height: 1.05; letter-spacing: 1px; color: var(--farol); }
-.pat-card.ouro .pat-nome { font-size: clamp(26px, 3.2vw, 34px); color: var(--laranja-vivo); font-style: italic; }
-.pat-selo { display: inline-block; border: 1px solid var(--laranja); color: var(--laranja); padding: 5px 10px;
-    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; margin-top: auto; }
-.pat-card.ouro .pat-selo { background: var(--laranja-vivo); border-color: var(--laranja-vivo); color: var(--noite);
-    font-weight: 700; font-size: 12px; letter-spacing: 3px; padding: 7px 14px; }
 @media (max-width: 760px) {
   .pat-grade { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .pat-card.ouro, .pat-card:last-child { grid-column: 1 / -1; }
   .pat-logo { height: 130px; padding: 14px; }
-  .pat-logo img { max-height: 70px; }
-  .pat-card.ouro .pat-logo { height: 170px; }
-  .pat-card.ouro .pat-logo img { max-height: 120px; }
+  .pat-logo img { max-height: 76px; }
   .pat-info { padding: 14px 14px 16px; }
 }
 </style>
@@ -541,32 +530,28 @@
     <div class="kicker mono">Setor 03-B · Quem já está no grid</div>
     <h2 class="headline display">Patrocinadores confirmados</h2>
     <div class="pat-grade">
-      <div class="pat-card ouro">
+      <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/desoflor.png" alt="Desoflor"></div>
         <div class="pat-info">
           <div class="pat-nome display">Desoflor</div>
-          <span class="pat-selo mono">COTA OURO</span>
         </div>
       </div>
       <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/aventum-branco.png" alt="AVENTUM"></div>
         <div class="pat-info">
           <div class="pat-nome display">AVENTUM</div>
-          <span class="pat-selo mono">COTA BRONZE</span>
         </div>
       </div>
       <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/flv-branco.png" alt="FLV Corretora de Seguros"></div>
         <div class="pat-info">
           <div class="pat-nome display">FLV Corretora de Seguros</div>
-          <span class="pat-selo mono">COTA BRONZE</span>
         </div>
       </div>
       <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/map.png" alt="MAP Life Insurance"></div>
         <div class="pat-info">
           <div class="pat-nome display">MAP Life Insurance</div>
-          <span class="pat-selo mono">COTA BRONZE</span>
         </div>
       </div>
     </div>
