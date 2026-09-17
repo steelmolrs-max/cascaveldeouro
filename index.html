@@ -263,6 +263,15 @@
     color: var(--cinza); text-transform: uppercase; line-height: 1.9; }
 .ing-nota b { color: var(--farol); font-weight: 400; }
 
+/* ===== v9: na imprensa (Gazeta do Povo) ===== */
+.imprensa { margin-top: 34px; border: 1px solid var(--linha); border-left: 3px solid var(--laranja-vivo); padding: 30px 34px; background: var(--noite); }
+.imprensa .veiculo { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+.imprensa .veiculo b { color: var(--laranja-vivo); font-weight: 400; }
+.imprensa h3 { font-size: clamp(24px, 3.4vw, 36px); line-height: 1.05; color: var(--farol); margin-top: 12px; font-style: italic; text-transform: none; }
+.imprensa .linha-fina { font-size: 15px; line-height: 1.7; color: #B9B7B1; margin-top: 14px; max-width: 760px; }
+.imprensa blockquote { margin: 20px 0 0; padding-left: 16px; border-left: 1px solid var(--laranja); font-size: 15px; line-height: 1.7; color: var(--farol); font-style: italic; max-width: 760px; }
+.imprensa .ghost { margin-top: 24px; }
+@media (max-width: 760px) { .imprensa { padding: 22px 18px; } }
 /* ===== v8: patrocinadores confirmados (sem cota: todos com o mesmo peso) ===== */
 .pat-grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 34px; }
 .pat-card { border: 1px solid var(--linha); display: flex; flex-direction: column; min-width: 0; }
@@ -524,6 +533,21 @@
   </div>
 </section>
 
+<!-- ============ NA IMPRENSA ============ -->
+<section style="padding-top: 20px">
+  <div class="wrap">
+    <div class="kicker mono">Setor 03-A · Na imprensa</div>
+    <h2 class="headline display">Saiu na <span>Gazeta do Povo</span></h2>
+    <article class="imprensa">
+      <div class="veiculo mono"><b>Gazeta do Povo</b> · 04/09/2026</div>
+      <h3 class="display">Cascavel de Ouro vira palco para conexão entre indústria, automobilismo e negócios</h3>
+      <p class="linha-fina">Evento tradicional do automobilismo brasileiro será cenário para o lançamento do Box Connection, iniciativa liderada pelo gestor e piloto Davi Vianna Amaral Júnior para aproximar empresários, empresas e profissionais que fazem parte desse ecossistema.</p>
+      <blockquote>"Não é apenas sobre vender ou fazer networking por fazer. É sobre criar conexões que tenham sentido."</blockquote>
+      <a class="ghost display" href="https://www.gazetadopovo.com.br/gpbc/steelmolas/cascavel-de-ouro-vira-palco-para-conexao-entre-industria-automobilismo-e-negocios/" target="_blank" rel="noopener"><span>Ler a matéria completa</span></a>
+    </article>
+  </div>
+</section>
+
 <!-- ============ PATROCINADORES CONFIRMADOS ============ -->
 <section style="padding-top: 20px">
   <div class="wrap">
@@ -565,7 +589,7 @@
     <div class="kicker mono">Setor 04 · Próximos passos</div>
     <h2 class="headline display">A noite de 21/11 vai acontecer.<br><span>Com ou sem você?</span></h2>
     <div class="passos">
-      <div class="passo"><div class="num-p mono">01</div><h4 class="display">Escolha o seu nome</h4><p>Ouro, Prata ou Bronze — enquanto um dos 14 lugares for seu.</p></div>
+      <div class="passo"><div class="num-p mono">01</div><h4 class="display">Escolha o seu nome</h4><p>Ouro, Prata ou Bronze — a partir de 10x R$ 447.</p></div>
       <div class="passo"><div class="num-p mono">02</div><h4 class="display">Contrato simples</h4><p>Tudo documentado, pagamento facilitado.</p></div>
       <div class="passo"><div class="num-p mono">03</div><h4 class="display">Você em cena</h4><p>No carro, no camarote, no palco e no feed — até 21/11.</p></div>
     </div>
