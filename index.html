@@ -263,6 +263,17 @@
     color: var(--cinza); text-transform: uppercase; line-height: 1.9; }
 .ing-nota b { color: var(--farol); font-weight: 400; }
 
+/* ===== v10: video por dentro do camarote ===== */
+.camarote-video { display: grid; grid-template-columns: minmax(0, 360px) 1fr; gap: 44px; align-items: center; margin-top: 30px; }
+.camarote-video .vbox { border: 1px solid var(--linha); background: var(--noite); }
+.camarote-video video { width: 100%; display: block; aspect-ratio: 9 / 16; background: #000; }
+.camarote-video .txt .lead { margin-top: 0; }
+.camarote-video .txt .lead + .lead { margin-top: 14px; }
+.camarote-video .credito { margin-top: 18px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
+@media (max-width: 760px) {
+  .camarote-video { grid-template-columns: 1fr; gap: 22px; }
+  .camarote-video .vbox { max-width: 360px; width: 100%; margin: 0 auto; }
+}
 /* ===== v9: na imprensa (Gazeta do Povo) ===== */
 .imprensa { margin-top: 34px; border: 1px solid var(--linha); border-left: 3px solid var(--laranja-vivo); padding: 30px 34px; background: var(--noite); }
 .imprensa .veiculo { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--cinza); }
@@ -496,6 +507,25 @@
             <a class="slab display" href="ingresso.html"><span>Quero meu ingresso</span></a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR DENTRO DO CAMAROTE (video) ============ -->
+<section style="padding-top: 20px; padding-bottom: 20px">
+  <div class="wrap">
+    <div class="kicker mono">Setor 02-C · Por dentro do camarote</div>
+    <h2 class="headline display">Assim é um <span>camarote</span> em Cascavel</h2>
+    <div class="camarote-video">
+      <div class="vbox">
+        <video src="video/camarote-cascavel.mp4" poster="video/camarote-cascavel-poster.jpg"
+               controls playsinline preload="none"></video>
+      </div>
+      <div class="txt">
+        <p class="lead">Gravado em Cascavel, num camarote <strong>igual ao nosso</strong>: buffet, telão com a prova ao vivo e gente que faz negócio enquanto a corrida acontece.</p>
+        <p class="lead">E com uma visita que ninguém esquece: o <strong>Ayrton Sienna</strong>.</p>
+        <div class="credito mono">Aperte o play · vídeo com som</div>
       </div>
     </div>
   </div>
