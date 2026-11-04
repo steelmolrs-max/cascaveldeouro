@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; media-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com 'sha256-PpJqh/Fot8qa885PtpFWZ0nXqWTnPRCgrBp/i+l4nwg='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; media-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com 'sha256-Dqv5AUnIpgxEzpD1opFwRArstkFTshfE3SbywRIFUw8='; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="robots" content="noindex">
 <meta name="description" content="Camarote Box Connection na Cascavel de Ouro 2026 — open bar e open food, a noite inteira entre os 80 decisores. Lote fechado de 20 ingressos, R$ 597,00.">
 <title>Ingresso · Camarote Box Connection — Cascavel de Ouro 2026</title>
@@ -116,6 +116,15 @@
   .recado b { color: var(--farol); }
   .recado[hidden] { display: none; }
 
+  .dados { margin-top: 18px; display: flex; flex-direction: column; }
+  .dados-tit { font-size: 10.5px; letter-spacing: 2px; color: var(--laranja); text-transform: uppercase; margin-bottom: 6px; }
+  .dados label { font-size: 12.5px; color: #B9B7B1; margin-top: 10px; margin-bottom: 4px; }
+  .dados label small { color: var(--cinza); font-size: 11px; }
+  .dados input { width: 100%; background: #0E0E10; color: var(--farol); border: 1px solid #3A3A36;
+      padding: 11px 12px; font-size: 16px; font-family: 'Work Sans', Arial, sans-serif; border-radius: 0; }
+  .dados input:focus { outline: none; border-color: var(--laranja-vivo); }
+  .dados input.erro { border-color: #E5484D; }
+  .dados .lgpd { font-size: 11.5px; color: var(--cinza); line-height: 1.5; margin-top: 10px; }
   .selo-pgto { margin-top: 14px; font-family: 'Geist Mono', monospace; font-size: 10px;
       letter-spacing: 1.4px; color: var(--cinza); text-transform: uppercase; line-height: 1.9; }
 
@@ -172,6 +181,19 @@
           <div class="parcela">R$ 597,00</div>
           <div class="avista mono">à vista no Pix<br>ou em até 10x no cartão<br><b style="color:var(--farol)">Por pessoa</b></div>
           <div class="vagas mono" id="vagas" aria-live="polite">Consultando as vagas do lote...</div>
+
+          <form class="dados" id="dados" novalidate autocomplete="on">
+            <div class="dados-tit mono">Para quem é o ingresso</div>
+            <label for="fNome">Nome completo</label>
+            <input id="fNome" name="name" type="text" autocomplete="name" maxlength="120" required>
+            <label for="fEmail">E-mail <small>(o ingresso chega aqui)</small></label>
+            <input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" required>
+            <label for="fCpf">CPF</label>
+            <input id="fCpf" name="cpf" type="text" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required>
+            <label for="fFone">WhatsApp <small>(opcional)</small></label>
+            <input id="fFone" name="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="(45) 99999-9999">
+            <p class="lgpd">Usamos esses dados só para emitir o seu ingresso e para o Mercado Pago confirmar o pagamento.</p>
+          </form>
 
           <div class="btn-area">
             <button type="button" class="slab" id="btnComprar">
@@ -274,8 +296,59 @@
         && /^https:\/\/[a-z0-9.-]*(mercadopago|mercadolibre)\.com(\.br)?\//i.test(url);
   }
 
+  // ---- dados do comprador (o Mercado Pago recusa Pix de comprador anonimo) ----
+  var campos = {
+    nome: document.getElementById("fNome"),
+    email: document.getElementById("fEmail"),
+    cpf: document.getElementById("fCpf"),
+    telefone: document.getElementById("fFone")
+  };
+  function digitos(s) { return String(s || "").replace(/\D/g, ""); }
+  function cpfValido(c) {
+    var d = digitos(c);
+    if (d.length !== 11 || /^(\d)\1{10}$/.test(d)) return false;
+    for (var n = 9; n <= 10; n++) {
+      var soma = 0;
+      for (var i = 0; i < n; i++) soma += Number(d.charAt(i)) * (n + 1 - i);
+      if ((soma * 10) % 11 % 10 !== Number(d.charAt(n))) return false;
+    }
+    return true;
+  }
+  campos.cpf.addEventListener("input", function () {
+    var d = digitos(campos.cpf.value).slice(0, 11), f = d;
+    if (d.length > 9) f = d.slice(0, 3) + "." + d.slice(3, 6) + "." + d.slice(6, 9) + "-" + d.slice(9);
+    else if (d.length > 6) f = d.slice(0, 3) + "." + d.slice(3, 6) + "." + d.slice(6);
+    else if (d.length > 3) f = d.slice(0, 3) + "." + d.slice(3);
+    campos.cpf.value = f;
+  });
+  var AVISOS = {
+    nome: "<b>Escreva o seu nome completo</b> (nome e sobrenome), do jeito que vai no ingresso.",
+    email: "<b>Confira o e-mail.</b> É para ele que o ingresso vai depois do pagamento.",
+    cpf: "<b>Confira o CPF.</b> O número digitado não é um CPF válido."
+  };
+  function marcarErro(campo) {
+    for (var k in campos) campos[k].className = "";
+    if (campos[campo]) { campos[campo].className = "erro"; campos[campo].focus(); }
+    dizer(AVISOS[campo] || "<b>Confira os seus dados.</b>");
+  }
+  function lerDados() {
+    var d = {
+      nome: campos.nome.value.replace(/\s+/g, " ").trim(),
+      email: campos.email.value.trim(),
+      cpf: digitos(campos.cpf.value),
+      telefone: digitos(campos.telefone.value)
+    };
+    if (d.nome.split(" ").length < 2) return { erro: "nome" };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) return { erro: "email" };
+    if (!cpfValido(d.cpf)) return { erro: "cpf" };
+    return d;
+  }
+
   function comprar() {
     if (ocupado || btn.disabled) return;
+    var dados = lerDados();
+    if (dados.erro) { marcarErro(dados.erro); return; }
+    for (var k in campos) campos[k].className = "";
     ocupado = true;
     recado.hidden = true;
     btn.disabled = true;
@@ -298,7 +371,7 @@
     fetch(API + "?acao=comprar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ quantidade: 1 })
+      body: JSON.stringify({ quantidade: 1, nome: dados.nome, email: dados.email, cpf: dados.cpf, telefone: dados.telefone })
     })
       .then(function (r) { return r.json(); })
       .then(function (d) {
@@ -308,6 +381,7 @@
           return;
         }
         if (d && d.motivo === "esgotado") { ocupado = false; travarPorEsgotado(); return; }
+        if (d && d.motivo === "dados_invalidos") { liberar(); marcarErro(d.campo); return; }
         liberar("Tentar de novo");
         dizer("<b>Não conseguimos abrir o pagamento agora.</b> Tente de novo em alguns segundos. "
             + "Se continuar assim, chame no WhatsApp que a gente reserva o seu ingresso na mão.");
