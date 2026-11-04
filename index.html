@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net; script-src 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw=' 'sha256-wlZkI4WegTekiiEY+mYagARd7VDGPSzIwfOBiD0RQcc=' 'sha256-xB1zvU4vXv6n8N7SZkJ8bNUatO2aB22qxp4Q1xieL0I='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; media-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw=' 'sha256-wlZkI4WegTekiiEY+mYagARd7VDGPSzIwfOBiD0RQcc=' 'sha256-xB1zvU4vXv6n8N7SZkJ8bNUatO2aB22qxp4Q1xieL0I='; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="description" content="Davi Vianna #36 — Cascavel de Ouro e Cascavel de Prata 2026. Sua marca em DOIS carros. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de 10x R$ 447.">
 <meta property="og:title" content="Cascavel de Ouro 2026 — Carro #36 · Davi Vianna · sua marca em dois carros">
 <meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca em dois carros a partir de 10x R$ 447.">
@@ -693,5 +693,6 @@
     .catch(function () {});
 })();
 </script>
+<script src="/analytics.js" defer></script>
 </body>
 </html>
