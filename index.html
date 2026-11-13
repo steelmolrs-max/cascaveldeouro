@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; media-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com 'sha256-4EaUV5ArnoGsLsADpaPikR0p/VKEw2AUxnzFtTQyfrw=' 'sha256-wlZkI4WegTekiiEY+mYagARd7VDGPSzIwfOBiD0RQcc=' 'sha256-xB1zvU4vXv6n8N7SZkJ8bNUatO2aB22qxp4Q1xieL0I='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; media-src 'self'; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; script-src 'self' https://www.googletagmanager.com 'sha256-jq6ChGwVafXNl501o3SQTRg1PVgLjKgQtzME+yTG5Io=' 'sha256-wlZkI4WegTekiiEY+mYagARd7VDGPSzIwfOBiD0RQcc=' 'sha256-xB1zvU4vXv6n8N7SZkJ8bNUatO2aB22qxp4Q1xieL0I='; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="description" content="Davi Vianna #36 — Cascavel de Ouro e Cascavel de Prata 2026. Sua marca em DOIS carros. Camarote para 80 decisores, palco pra apresentar o seu negócio e sua marca a 200 km/h. A partir de 10x R$ 447.">
 <meta property="og:title" content="Cascavel de Ouro 2026 — Carro #36 · Davi Vianna · sua marca em dois carros">
 <meta property="og:description" content="O carro é nosso. A noite é sua. Sua marca em dois carros a partir de 10x R$ 447.">
@@ -297,10 +297,38 @@
   .pat-logo img { max-height: 76px; }
   .pat-info { padding: 14px 14px 16px; }
 }
+/* ===== v9: contagem grande no topo ===== */
+.ct-topo { background: var(--laranja-vivo); color: var(--noite); padding: 18px 16px 20px; text-align: center; }
+.ct-titulo { font-size: 12px; letter-spacing: 3px; font-weight: 700; }
+.ct-num { display: flex; justify-content: center; align-items: flex-start; gap: clamp(8px, 2.6vw, 30px); margin-top: 16px; }
+.ct-num > div { display: flex; flex-direction: column; align-items: center; min-width: clamp(58px, 17vw, 150px); }
+.ct-num b { font-family: 'Boldonse', 'Big Shoulders', sans-serif; font-weight: 400; font-size: clamp(40px, 11vw, 112px);
+    line-height: 1.1; font-variant-numeric: tabular-nums; }
+.ct-num span { font-family: 'Geist Mono', monospace; font-size: clamp(10px, 1.6vw, 14px); letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; }
+.ct-num .sep { font-family: 'Boldonse', sans-serif; font-size: clamp(30px, 8vw, 84px); line-height: 1.3; min-width: 0; opacity: .5; }
+@media (max-width: 760px) { .ct-num .sep { display: none; } }
+/* ===== v9: cotas encerradas ===== */
+.cotas-encerradas-faixa { margin-top: 30px; border: 2px solid var(--laranja-vivo); padding: 22px 24px; text-align: center; }
+.cotas-encerradas-faixa .t { font-family: 'Boldonse', sans-serif; font-size: clamp(26px, 5vw, 50px); color: var(--laranja-vivo); line-height: 1.2; text-transform: uppercase; }
+.cotas-encerradas-faixa .s { font-size: 13px; letter-spacing: 1px; color: var(--farol); margin-top: 10px; line-height: 1.6; }
+.cotas-fechadas .cota { opacity: .55; }
+.negocie.encerrada { border-color: var(--cinza); color: var(--cinza); cursor: default; }
+/* ===== v9: grade de patrocinadores com logo colorida (todas com o mesmo peso) ===== */
+.pat-grade.todas .pat-logo { background: #FFFFFF; border-bottom: 0; }
+.pat-grade.todas .pat-card { border-color: #FFFFFF; }
 </style>
 </head>
 <body>
 
+<div class="ct-topo" id="contagemTopo">
+  <div class="ct-titulo">CONTAGEM REGRESSIVA · LARGADA 21.11.2026 · 20H</div>
+  <div class="ct-num">
+    <div><b id="ctD">--</b><span>dias</span></div><div class="sep">:</div>
+    <div><b id="ctH">--</b><span>horas</span></div><div class="sep">:</div>
+    <div><b id="ctM">--</b><span>min</span></div><div class="sep">:</div>
+    <div><b id="ctS">--</b><span>seg</span></div>
+  </div>
+</div>
 <div class="tele-bar mono"><span>PROJETO DE PATROCÍNIO · TEMPORADA 2026</span><span><b>21.11.2026 · PROVA NOTURNA</b></span></div>
 <div class="regua"></div>
 
@@ -314,16 +342,54 @@
     </div>
     <h1 class="display">Davi Vianna <span class="num">#36</span></h1>
     <div class="dupla mono">DUAS PROVAS · <b>CASCAVEL DE OURO</b> E <b>CASCAVEL DE PRATA</b></div>
-    <div class="contagem mono" id="contagem" aria-live="polite"></div>
     <div class="frase">
       <div class="statement display">O carro é <em>nosso</em>.<br>A noite é <em>sua</em>.</div>
       <div class="cta-group">
-        <a class="slab display" href="https://wa.me/5541988550223?text=Quero%20saber%20mais%20sobre%20o%20patroc%C3%ADnio%20do%20carro%20%2382%20na%20Cascavel%20de%20Ouro"><span>Quero patrocinar</span></a>
+        <a class="slab display" href="ingresso.html"><span>Quero meu ingresso</span></a>
         <a class="ghost display" href="midia-kit-davi-vianna-82.pdf" download><span>Baixar mídia kit</span></a>
       </div>
     </div>
   </div>
 </header>
+
+<!-- ============ INGRESSO DO CAMAROTE ============ -->
+<section style="padding-top: 20px; padding-bottom: 20px">
+  <div class="wrap">
+    <div class="kicker mono">Camarote Box Connection · ingressos abertos</div>
+    <h2 class="headline display">Sem cota,<br><span>mas dentro da sala.</span></h2>
+    <p class="lead">A cota coloca o seu nome no carro. O ingresso coloca <strong>você dentro da mesma sala</strong> —
+       a noite inteira no camarote, entre os <strong>80 empresários, influenciadores e decisores</strong> que a
+       cidade tenta juntar o ano todo. <strong>Lote fechado de 20 ingressos</strong>: quando acabar, a lista fecha.</p>
+
+    <div class="ing-bloco">
+      <span class="etiqueta">Ingresso avulso · camarote</span>
+      <div class="ing-grade">
+        <div>
+          <div class="ing-nome">Camarote <em>Box Connection</em></div>
+          <div class="ing-sub">21.11.2026 · Autódromo Zilmar Beux · Cascavel — PR</div>
+          <div class="ing-itens">
+            <div><b>Open bar a noite inteira</b> — a bebida já está paga quando você chega</div>
+            <div><b>Open food</b> — servido no camarote, do começo ao fim da prova</div>
+            <div><b>Seu lugar entre os 80 decisores</b> — a mesma sala dos patrocinadores e convidados</div>
+            <div><b>A Cascavel de Ouro vista de dentro</b> — a noite mais aguardada do ano no Paraná</div>
+            <div><b>Estacionamento cortesia</b> — pagando no Pix, a vaga é por nossa conta</div>
+          </div>
+          <div class="ing-nota mono">O ingresso é <b>a entrada na sala</b>. Marca no carro, estande e microfone
+             no palco seguem exclusivos de quem fecha cota.</div>
+        </div>
+        <div class="ing-preco-caixa">
+          <div class="ing-parcela">R$ 597,00</div>
+          <div class="ing-avista mono">à vista no Pix<br>ou no cartão de crédito<br><b style="color:var(--farol)">Por pessoa</b><br>
+             <b style="color:var(--laranja-vivo)">No Pix, estacionamento cortesia</b></div>
+          <div class="ing-restam" id="ingRestam" aria-live="polite">Lote fechado de 20 ingressos</div>
+          <div class="ing-cta">
+            <a class="slab display" href="ingresso.html"><span>Quero meu ingresso</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ O EVENTO / NETWORKING ============ -->
 <!-- ============ VIDEO OFICIAL ============ -->
@@ -401,14 +467,20 @@
       <p class="mono">Uma cota, presença nas duas provas. O mesmo investimento aparece duas vezes.</p>
     </div>
 
-    <div style="margin-top: 38px">
+    <div class="cotas-encerradas-faixa">
+      <div class="t">Cotas encerradas</div>
+      <div class="s mono">Todas as marcas de 2026 já estão no carro. Ainda dá pra estar dentro da sala:
+        <a href="ingresso.html" style="color:var(--laranja-vivo)">garanta o seu ingresso do camarote</a>.</div>
+    </div>
+
+    <div class="cotas-fechadas" style="margin-top: 38px">
       <div class="cota ouro-tier">
         <div class="rank mono">C-01</div>
         <div>
           <div class="nome-cota display">Ouro</div>
           <div class="parcela">10x R$ 1.477</div>
           <div class="avista mono">ou R$ 14.770 à vista<br><b style="color:var(--laranja-vivo)">O dono da noite</b></div>
-          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20a%20cota%20OURO%20da%20Cascavel%20de%20Ouro%20(10x%20R$%201.477)">Quero essa cota</a>
+          <span class="negocie encerrada">Cota encerrada</span>
         </div>
         <div class="convites-bloco">
           <div class="conv-num">15</div>
@@ -431,7 +503,7 @@
           <div class="nome-cota display">Prata</div>
           <div class="parcela">10x R$ 997</div>
           <div class="avista mono">ou R$ 9.970 à vista<br><b>Nos dois carros</b></div>
-          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20a%20cota%20PRATA%20da%20Cascavel%20de%20Ouro%20(10x%20R$%20997)">Quero essa cota</a>
+          <span class="negocie encerrada">Cota encerrada</span>
         </div>
         <div class="convites-bloco">
           <div class="conv-num">10</div>
@@ -451,7 +523,7 @@
           <div class="nome-cota display">Bronze</div>
           <div class="parcela">10x R$ 447</div>
           <div class="avista mono">ou R$ 4.470 à vista<br><b>Nos dois carros</b></div>
-          <a class="negocie" href="https://wa.me/5541988550223?text=Quero%20a%20cota%20BRONZE%20da%20Cascavel%20de%20Ouro%20(10x%20R$%20447)">Quero essa cota</a>
+          <span class="negocie encerrada">Cota encerrada</span>
         </div>
         <div class="convites-bloco">
           <div class="conv-num">5</div>
@@ -469,45 +541,6 @@
     <div class="fecho-oferta">
       <div class="destaque">Dez parcelas. <em>Nenhuma pergunta na sua mesa.</em><br>Os convites já saem com o seu nome.</div>
       <div class="nota mono">O carro é adesivado em <b style="color:var(--farol)">outubro</b>.<br>Depois disso não entra mais marca.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ INGRESSO DO CAMAROTE ============ -->
-<section style="padding-top: 20px; padding-bottom: 20px">
-  <div class="wrap">
-    <div class="kicker mono">Setor 02-B · Para quem não vai levar cota</div>
-    <h2 class="headline display">Sem cota,<br><span>mas dentro da sala.</span></h2>
-    <p class="lead">A cota coloca o seu nome no carro. O ingresso coloca <strong>você dentro da mesma sala</strong> —
-       a noite inteira no camarote, entre os <strong>80 empresários, influenciadores e decisores</strong> que a
-       cidade tenta juntar o ano todo. <strong>Lote fechado de 20 ingressos</strong>: quando acabar, a lista fecha.</p>
-
-    <div class="ing-bloco">
-      <span class="etiqueta">Ingresso avulso · camarote</span>
-      <div class="ing-grade">
-        <div>
-          <div class="ing-nome">Camarote <em>Box Connection</em></div>
-          <div class="ing-sub">21.11.2026 · Autódromo Zilmar Beux · Cascavel — PR</div>
-          <div class="ing-itens">
-            <div><b>Open bar a noite inteira</b> — a bebida já está paga quando você chega</div>
-            <div><b>Open food</b> — servido no camarote, do começo ao fim da prova</div>
-            <div><b>Seu lugar entre os 80 decisores</b> — a mesma sala dos patrocinadores e convidados</div>
-            <div><b>A Cascavel de Ouro vista de dentro</b> — a noite mais aguardada do ano no Paraná</div>
-            <div><b>Estacionamento cortesia</b> — pagando no Pix, a vaga é por nossa conta</div>
-          </div>
-          <div class="ing-nota mono">O ingresso é <b>a entrada na sala</b>. Marca no carro, estande e microfone
-             no palco seguem exclusivos de quem fecha cota.</div>
-        </div>
-        <div class="ing-preco-caixa">
-          <div class="ing-parcela">R$ 597,00</div>
-          <div class="ing-avista mono">à vista no Pix<br>ou no cartão de crédito<br><b style="color:var(--farol)">Por pessoa</b><br>
-             <b style="color:var(--laranja-vivo)">No Pix, estacionamento cortesia</b></div>
-          <div class="ing-restam" id="ingRestam" aria-live="polite">Lote fechado de 20 ingressos</div>
-          <div class="ing-cta">
-            <a class="slab display" href="ingresso.html"><span>Quero meu ingresso</span></a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -558,6 +591,9 @@
         <img src="fotos/logos/aventum-branco.png" alt="AVENTUM" style="height:48px">
         <img src="fotos/logos/flv-branco.png" alt="FLV Corretora de Seguros" style="height:64px">
         <img src="fotos/logos/map-branco.png" alt="MAP Life Insurance" style="height:56px">
+        <img src="fotos/logos/conexao-china-branco.png" alt="Conexão China" style="height:30px">
+        <img src="fotos/logos/excell-company-branco.png" alt="Excell Company" style="height:40px">
+        <img src="fotos/logos/xdiamond-branco.png" alt="XDIAMOND" style="height:22px">
       </div>
     </div>
   </div>
@@ -582,31 +618,61 @@
 <section style="padding-top: 20px">
   <div class="wrap">
     <div class="kicker mono">Setor 03-B · Quem já está no grid</div>
-    <h2 class="headline display">Patrocinadores confirmados</h2>
-    <div class="pat-grade">
+    <h2 class="headline display">Patrocinadores e parceiros</h2>
+    <div class="pat-grade todas">
       <div class="pat-card">
-        <div class="pat-logo"><img src="fotos/logos/desoflor.png" alt="Desoflor"></div>
-        <div class="pat-info">
-          <div class="pat-nome display">Desoflor</div>
-        </div>
+        <div class="pat-logo"><img src="fotos/logos/steelmol.png" alt="Steelmol" loading="lazy"></div>
       </div>
       <div class="pat-card">
-        <div class="pat-logo"><img src="fotos/logos/aventum-branco.png" alt="AVENTUM"></div>
-        <div class="pat-info">
-          <div class="pat-nome display">AVENTUM</div>
-        </div>
+        <div class="pat-logo"><img src="fotos/logos/conexao-china.png" alt="Conexão China" loading="lazy"></div>
       </div>
       <div class="pat-card">
-        <div class="pat-logo"><img src="fotos/logos/flv-branco.png" alt="FLV Corretora de Seguros"></div>
-        <div class="pat-info">
-          <div class="pat-nome display">FLV Corretora de Seguros</div>
-        </div>
+        <div class="pat-logo"><img src="fotos/logos/excell-company.png" alt="Excell Company" loading="lazy"></div>
       </div>
       <div class="pat-card">
-        <div class="pat-logo"><img src="fotos/logos/map.png" alt="MAP Life Insurance"></div>
-        <div class="pat-info">
-          <div class="pat-nome display">MAP Life Insurance</div>
-        </div>
+        <div class="pat-logo"><img src="fotos/logos/desoflor.png" alt="Desoflor" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/aventum.png" alt="AVENTUM" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/flv.png" alt="FLV Corretora de Seguros" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/map.png" alt="MAP Life Insurance" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/evolutte.png" alt="Evolutte Empreendimentos" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/sieger.png" alt="Sieger Chemical" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/usina82.png" alt="Usina 82" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/xdiamond.png" alt="XDIAMOND" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/3ram.png" alt="3RAM Racing Intelligence" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/gold-driver.png" alt="Gold Driver Brasil" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/prudential.png" alt="Prudential Corretora Franqueada" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/box-connection.png" alt="Box Connection" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/sulnopista.png" alt="Sulnopista" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/chegueiponto.png" alt="ChegueiPonto" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/setechaves.png" alt="Sete Chaves" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -619,12 +685,13 @@
     <div class="kicker mono">Setor 04 · Próximos passos</div>
     <h2 class="headline display">A noite de 21/11 vai acontecer.<br><span>Com ou sem você?</span></h2>
     <div class="passos">
-      <div class="passo"><div class="num-p mono">01</div><h4 class="display">Escolha o seu nome</h4><p>Ouro, Prata ou Bronze — a partir de 10x R$ 447.</p></div>
-      <div class="passo"><div class="num-p mono">02</div><h4 class="display">Contrato simples</h4><p>Tudo documentado, pagamento facilitado.</p></div>
-      <div class="passo"><div class="num-p mono">03</div><h4 class="display">Você em cena</h4><p>No carro, no camarote, no palco e no feed — até 21/11.</p></div>
+      <div class="passo"><div class="num-p mono">01</div><h4 class="display">Cotas encerradas</h4><p>Todas as marcas de 2026 já estão no carro.</p></div>
+      <div class="passo"><div class="num-p mono">02</div><h4 class="display">Ingresso do camarote</h4><p>Open bar, open food e a sala dos 80 decisores — R$ 597.</p></div>
+      <div class="passo"><div class="num-p mono">03</div><h4 class="display">Você em cena</h4><p>21/11, no Autódromo Zilmar Beux, a noite inteira.</p></div>
     </div>
     <div class="cta-group">
-      <a class="slab display" href="https://wa.me/5541988550223?text=Quero%20conversar%20sobre%20o%20patroc%C3%ADnio%20da%20Cascavel%20de%20Ouro"><span>WhatsApp · (41) 98855-0223</span></a>
+      <a class="slab display" href="ingresso.html"><span>Quero meu ingresso</span></a>
+      <a class="ghost display" href="https://wa.me/5541988550223?text=Quero%20saber%20mais%20sobre%20o%20camarote%20da%20Cascavel%20de%20Ouro"><span>WhatsApp · (41) 98855-0223</span></a>
       <a class="ghost display" href="midia-kit-davi-vianna-82.pdf" download><span>Mídia kit</span></a>
     </div>
   </div>
@@ -638,20 +705,22 @@
 </footer>
 
 <script>
-// Contagem regressiva ate a prova. A escassez ja e o argumento central da
-// pagina — mostrar o numero caindo torna o prazo concreto em vez de abstrato.
+// Contagem regressiva grande no topo: dias, horas, minutos e segundos ate a largada.
 (function () {
-  var alvo = new Date("2026-11-21T20:00:00-03:00");
-  var el = document.getElementById("contagem");
-  if (!el) return;
+  var alvo = new Date("2026-11-21T20:00:00-03:00").getTime();
+  var d = document.getElementById("ctD"), h = document.getElementById("ctH"),
+      m = document.getElementById("ctM"), sg = document.getElementById("ctS");
+  if (!d) return;
+  function dois(n) { return (n < 10 ? "0" : "") + n; }
   function pintar() {
-    var faltam = Math.ceil((alvo - new Date()) / 86400000);
-    el.innerHTML = faltam > 0
-      ? "FALTAM <b>" + faltam + "</b> DIAS PARA A LARGADA"
-      : "A NOITE É HOJE";
+    var t = Math.max(0, Math.floor((alvo - Date.now()) / 1000));
+    d.textContent = dois(Math.floor(t / 86400));
+    h.textContent = dois(Math.floor(t % 86400 / 3600));
+    m.textContent = dois(Math.floor(t % 3600 / 60));
+    sg.textContent = dois(t % 60);
   }
   pintar();
-  setInterval(pintar, 3600000);   // reconfere de hora em hora, para quem deixa a aba aberta
+  setInterval(pintar, 1000);
 })();
 </script>
 
