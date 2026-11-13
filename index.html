@@ -316,6 +316,19 @@
 /* ===== v9: grade de patrocinadores com logo colorida (todas com o mesmo peso) ===== */
 .pat-grade.todas .pat-logo { background: #FFFFFF; border-bottom: 0; }
 .pat-grade.todas .pat-card { border-color: #FFFFFF; }
+/* ===== v10: patrocinadores master (decisao do dono 13/11) ===== */
+.master-titulo { margin-top: 34px; font-size: 12px; letter-spacing: 4px; color: var(--laranja-vivo); font-weight: 700; }
+.pat-grade.master { grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 14px; }
+.pat-grade.master .pat-card { border: 2px solid var(--laranja-vivo); }
+.pat-grade.master .pat-logo { height: 230px; }
+.pat-grade.master .pat-logo img { max-height: 150px; max-width: 78%; }
+.parceiros-titulo { margin-top: 40px; font-size: 12px; letter-spacing: 4px; color: var(--cinza); font-weight: 700; }
+.parceiros-titulo + .pat-grade { margin-top: 14px; }
+@media (max-width: 760px) {
+  .pat-grade.master { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pat-grade.master .pat-logo { height: 150px; }
+  .pat-grade.master .pat-logo img { max-height: 96px; }
+}
 </style>
 </head>
 <body>
@@ -619,7 +632,8 @@
   <div class="wrap">
     <div class="kicker mono">Setor 03-B · Quem já está no grid</div>
     <h2 class="headline display">Patrocinadores e parceiros</h2>
-    <div class="pat-grade todas">
+    <div class="master-titulo mono">PATROCINADORES MASTER</div>
+    <div class="pat-grade todas master">
       <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/steelmol.png" alt="Steelmol" loading="lazy"></div>
       </div>
@@ -627,11 +641,14 @@
         <div class="pat-logo"><img src="fotos/logos/conexao-china.png" alt="Conexão China" loading="lazy"></div>
       </div>
       <div class="pat-card">
-        <div class="pat-logo"><img src="fotos/logos/excell-company.png" alt="Excell Company" loading="lazy"></div>
-      </div>
-      <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/desoflor.png" alt="Desoflor" loading="lazy"></div>
       </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/excell-company.png" alt="Excell Company" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="parceiros-titulo mono">PATROCINADORES E PARCEIROS</div>
+    <div class="pat-grade todas">
       <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/aventum.png" alt="AVENTUM" loading="lazy"></div>
       </div>
@@ -649,6 +666,9 @@
       </div>
       <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/usina82.png" alt="Usina 82" loading="lazy"></div>
+      </div>
+      <div class="pat-card">
+        <div class="pat-logo"><img src="fotos/logos/alca.png" alt="Alca Representações" loading="lazy"></div>
       </div>
       <div class="pat-card">
         <div class="pat-logo"><img src="fotos/logos/xdiamond.png" alt="XDIAMOND" loading="lazy"></div>
