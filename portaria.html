@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self' blob:; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net; script-src 'sha256-0+cewWAsdT887Z39NtaOScoDTiKGx6OSHbWg9DE6tAA='; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; img-src 'self'; media-src 'self' blob:; font-src 'self'; connect-src 'self' https://us-central1-steelmol.cloudfunctions.net; script-src 'self' 'sha256-aMD1n0QOCseBD/EWLadRslH7q3X8GJFziVmgQ9MiNv0='; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#060607">
@@ -232,6 +232,7 @@
   <div class="sub">Falando com o servidor. N&atilde;o feche a tela.</div>
 </div>
 
+<script src="/vendor/jsQR.js"></script>
 <script>
 // Portaria do camarote — conferencia de ingresso na entrada.
 // Regra de ouro: verde SO aparece quando o servidor respondeu, em bom estado,
@@ -263,7 +264,7 @@
   function calar(el) { el.hidden = true; el.innerHTML = ""; }
 
   function temCamera() {
-    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.BarcodeDetector);
+    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && (window.BarcodeDetector || window.jsQR));
   }
 
   // Extrai o codigo de 12 hex do que veio no QR. O QR pode trazer so o codigo
@@ -335,7 +336,13 @@
     $("rotuloManual").innerHTML = "Ou digite o c&oacute;digo &mdash; 12 caracteres";
     if (stream) { comecarLeitura(); return; }
     try {
-      if (!detector) { detector = new window.BarcodeDetector({ formats: ["qr_code"] }); }
+      if (!detector) {
+        // Android/Chrome: leitor nativo. iPhone (Safari) nao tem BarcodeDetector:
+        // cai no jsQR (vendor/jsQR.js), que le o quadro do video num canvas.
+        detector = window.BarcodeDetector
+          ? new window.BarcodeDetector({ formats: ["qr_code"] })
+          : leitorJsQR();
+      }
     } catch (e) {
       semCamera("Este celular n&atilde;o consegue ler QR Code pela c&acirc;mera. Use a digita&ccedil;&atilde;o abaixo.");
       return;
@@ -382,6 +389,28 @@
   }
 
   function pararLeitura() { lendo = false; }
+
+  // Mesmo formato do BarcodeDetector: detect(video) -> Promise([{rawValue}]).
+  function leitorJsQR() {
+    if (!window.jsQR) { throw new Error("sem leitor"); }
+    var tela = document.createElement("canvas");
+    var ctx = tela.getContext("2d", { willReadFrequently: true });
+    return {
+      detect: function (v) {
+        return new Promise(function (ok) {
+          var w = v.videoWidth, h = v.videoHeight;
+          if (!w || !h) { ok([]); return; }
+          var escala = Math.min(1, 800 / Math.max(w, h)); // menor = mais rapido no celular
+          tela.width = Math.round(w * escala);
+          tela.height = Math.round(h * escala);
+          ctx.drawImage(v, 0, 0, tela.width, tela.height);
+          var img = ctx.getImageData(0, 0, tela.width, tela.height);
+          var r = window.jsQR(img.data, img.width, img.height, { inversionAttempts: "dontInvert" });
+          ok(r && r.data ? [{ rawValue: r.data }] : []);
+        });
+      }
+    };
+  }
 
   function varrer() {
     if (!lendo) { return; }
